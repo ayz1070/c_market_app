@@ -6,7 +6,7 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
 
-  static const Color primary = Color(0xFF5F0080);
+  static const Color primary = Color(0xFFDCAE96);
   static const Color onPrimary = Color(0xFFFFFFFF);
   static const Color secondary = Color(0xFFE86C3F);
   static const Color onSecondary = Color(0xFFFFFFFF);
@@ -22,10 +22,10 @@ class AppColors {
   static const Color onSurface = Color(0xFF1E1B1E);
   static const Color onSurfaceVariant = Color.fromRGBO(25, 25, 35, 0.15);
 
-  static const Color primaryContainer = Color(0xFF6F1A8C);
+  static const Color primaryContainer = Color(0xFFDCAE96);
 
   static const Color inverseSurface = Color.fromRGBO(25, 25, 35, 0.74);
-  static const Color inversePrimary = Color.fromRGBO(189, 118, 255, 0.9);
+  static const Color inversePrimary = Color.fromRGBO(252, 215, 3, 1.0);
   static const Color onInverseSurface = Color(0xFFDDDDDD);
 
   static const Color shadow = Color(0xFF000000);
