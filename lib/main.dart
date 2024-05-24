@@ -1,8 +1,5 @@
-import 'package:c_market_app/presentation/pages/cart/cart_page.dart';
-import 'package:c_market_app/presentation/pages/splash/splash_page.dart';
 import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MyApp());
