@@ -16,7 +16,7 @@ class DefaultAppBar extends StatelessWidget {
           bottomNav.toName,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

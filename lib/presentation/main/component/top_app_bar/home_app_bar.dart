@@ -16,21 +16,13 @@ class HomeAppBar extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: SvgPicture.asset(AppIcons.mainLogo),
         ),
-        title: Text(
-          'tabBar',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: SvgPicture.asset(
               AppIcons.notification,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.background,
+                Theme.of(context).colorScheme.surface,
                 BlendMode.srcIn,
               ),
             ),
@@ -40,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
             child: SvgPicture.asset(
               AppIcons.cart,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.background,
+                Theme.of(context).colorScheme.surface,
                 BlendMode.srcIn,
               ),
             ),

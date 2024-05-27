@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubit/bottom_nav_cubit.dart';
-import 'default_app_bar.dart';
 import 'home_app_bar.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,10 +12,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     return BlocBuilder<BottomNavCubit, BottomNav>(builder: (_, state) {
         switch (state) {
           case BottomNav.home:
-            return const HomeAppBar();
           case BottomNav.search:
           case BottomNav.user:
-            return DefaultAppBar(state);
+            return const HomeAppBar();
         }
       },
     );
