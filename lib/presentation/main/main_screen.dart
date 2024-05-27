@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/theme/constant/app_icons.dart';
+import '../pages/home/home_page.dart';
+import 'cubit/bottom_nav_cubit.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => BottomNavCubit(),
+      child: const MainScreenView(),
+    );
+  }
+}
+
+class MainScreenView extends StatelessWidget {
+  const MainScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,27 +68,37 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text('main_screen'),
+      body: BlocBuilder<BottomNavCubit, BottomNav>(
+        builder: (_, state) {
+          switch (state) {
+            case BottomNav.home:
+              return const HomePage();
+            case BottomNav.search:
+              return const SearchPage();
+            case BottomNav.user:
+              return const UserPage();
+          }
+        },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navHome),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navSearch),
-            label: 'search',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppIcons.navUser),
-            label: 'user',
-          ),
-        ],
+      bottomNavigationBar: BlocBuilder<BottomNavCubit, BottomNav>(
+        builder: (_, state) {
+          return BottomNavigationBar(
+            items: List.generate(
+              BottomNav.values.length,
+              (index) => BottomNavigationBarItem(
+                icon: SvgPicture.asset(BottomNav.values[index].icon),
+                label: BottomNav.values[index].toName,
+                activeIcon:
+                    SvgPicture.asset(BottomNav.values[index].activeIcon),
+              ),
+            ),
+            onTap: (index) => context.read<BottomNavCubit>().changeIndex(index),
+            currentIndex: state.index,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+          );
+        },
       ),
     );
   }
