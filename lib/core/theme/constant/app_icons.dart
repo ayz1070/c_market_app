@@ -13,6 +13,7 @@ class AppIcons {
   static const String checkMarkCircleFill =
       'assets/svg/icon-checkmark_circle_fill.svg';
   static const String chatKakaotalk = 'assets/svg/icon-kakaotalk_simple.svg';
+  static const String notification = 'assets/svg/icon-notification.svg';
 
   static const String navHome = 'assets/svg/nav-home.svg';
   static const String navHomeOn = 'assets/svg/nav-home_on.svg';
