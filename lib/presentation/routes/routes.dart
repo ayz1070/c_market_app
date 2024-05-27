@@ -1,4 +1,5 @@
 import 'package:c_market_app/presentation/pages/cart/cart_page.dart';
+import 'package:c_market_app/presentation/pages/detail/detail_page.dart';
 import 'package:c_market_app/presentation/pages/splash/splash_page.dart';
 import 'package:c_market_app/presentation/routes/route_path.dart';
 import 'package:go_router/go_router.dart';
@@ -14,5 +15,12 @@ GoRouter router = GoRouter(routes: [
     name: 'cart',
     builder: (context, state) => const CartPage(),
   ),
-], initialLocation: '/splash'
+  // 상세 화면 이동
+  GoRoute(
+    path: RoutePath.detail,
+    name: 'detail',
+    builder: (context, state) => const DetailPage(),
+  ),
+
+], initialLocation: '/detail'
 );
