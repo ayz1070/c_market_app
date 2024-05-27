@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../core/theme/constant/app_icons.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -6,12 +9,71 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('tabBar'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(44),
+        child: Container(
+          color: Theme.of(context).colorScheme.primary,
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          child: AppBar(
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(AppIcons.mainLogo),
+            ),
+            title: Text(
+              'tabBar',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            leadingWidth: 86,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SvgPicture.asset(
+                  AppIcons.notification,
+                  colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.background,
+                      BlendMode.srcIn),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SvgPicture.asset(
+                  AppIcons.cart,
+                  colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.background,
+                      BlendMode.srcIn),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: Center(
         child: Text('main_screen'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navHome),
+            label: 'home',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navSearch),
+            label: 'search',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(AppIcons.navUser),
+            label: 'user',
+          ),
+        ],
       ),
     );
   }
