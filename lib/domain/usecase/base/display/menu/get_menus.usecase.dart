@@ -14,7 +14,7 @@ class GetMenusUsecase extends RemoteUsecase<DisplayRepository> {
     final result = await repository.getMenuByMallType(mallType: mallType);
 
     return (result.status == 'SUCCESS')
-        ? Result.Success(result.data ?? [])
+        ? Result.success(result.data ?? [])
         : Result.failure(ErrorResponse(
             status: result.status,
             code: result.code,

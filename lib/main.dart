@@ -6,21 +6,13 @@ import 'package:c_market_app/domain/usecase/base/display/menu/get_menus.usecase.
 import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:c_market_app/service_locator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/theme/theme_data.dart';
+import 'presentation/main/cubit/mall_type_cubit.dart';
 
-void main() async{
-  final data = await DisplayMockApi().getMenusByMallType('market');
-  final data2 = await DisplayRepositoryImpl(DisplayMockApi()).getMenuByMallType(mallType: MallType.market);
-  //print(data);
-  //print(data2);
-
-  final menus = await DisplayUsecase(DisplayRepositoryImpl(DisplayMockApi()))
-      .excute(usecase: GetMenusUsecase(mallType: MallType.market));
-  final menus2 = locator<DisplayUsecase>()
-  .excute(usecase: GetMenusUsecase(mallType: MallType.market));
-  print(menus2);
-  //setLocator();
+void main(){
+  setLocator();
   runApp(const MyApp());
 }
 
@@ -30,9 +22,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: CustomThemeData.themeData,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MallTypeCubit>(
+          create: (context) => MallTypeCubit(),
+        ),
+        // Add other providers if needed
+      ],
+      child: MaterialApp.router(
+        routerConfig: router,
+        theme: CustomThemeData.themeData,
+      ),
     );
   }
 }

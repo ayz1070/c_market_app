@@ -41,6 +41,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const ReviewAddPage(),
     ),
   ],
-  initialLocation: '/detail',
+  initialLocation: '/splash',
 );
 
