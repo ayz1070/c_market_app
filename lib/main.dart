@@ -1,6 +1,8 @@
 import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 
+import 'core/theme/theme_data.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,7 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: router
+      routerConfig: router,
+      theme: CustomThemeData.themeData,
     );
   }
 }
