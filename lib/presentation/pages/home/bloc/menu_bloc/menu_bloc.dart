@@ -34,6 +34,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     final mallType = event.mallType;
 
     emit(state.copyWith(status: Status.loading));
+    await Future.delayed(Duration(seconds: 1));
     try {
       final Result<List<Menu>> response = await _fetch(mallType: mallType);
       response.when(
