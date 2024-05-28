@@ -4,6 +4,7 @@ import 'w_big_stars.dart';
 import 'w_detail_app_bar.dart';
 import 'w_review_app_bar.dart';
 import 'w_review_box.dart';
+import 'w_review_box_big.dart';
 
 class ReviewPage extends StatelessWidget {
   const ReviewPage({super.key});
@@ -16,22 +17,7 @@ class ReviewPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // 전체 리뷰
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BigStars(starCount: 5),
-                Padding(padding: EdgeInsets.only(top: 10)),
-                // 평점
-                Text(
-                  '5.0/5.0',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ],
-            ),
-          ),
+          BigReviewBox(reviewAvg: 5, starCount: 5,),
 
           Padding(
             padding: const EdgeInsets.only(left: 8),
