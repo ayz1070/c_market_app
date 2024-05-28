@@ -13,12 +13,16 @@ class DisplayMockApi implements DisplayApi {
           status: 'SUCCESS',
           code: '0000',
           message: '',
-          data: _menuParser(DisplayMockData.menusByMarket),
+          data: menuParser(
+            mallType == 'market'
+                ? DisplayMockData.menusByMarket
+                : DisplayMockData.menusByBeauty,
+          ),
         ),
     );
   }
 
-  List<MenuDto> _menuParser(String source) {
+  List<MenuDto> menuParser(String source) {
     List<MenuDto> menus = [];
     final List json = jsonDecode(source);
     menus = json.map((e) => MenuDto.fromJson(e)).toList();
