@@ -5,7 +5,7 @@ part 'result.freezed.dart';
 
 @freezed
 class Result<T>  with _$Result{
-  const factory Result.Success(T data)=Success;
+  const factory Result.success(T data)=Success;
   const factory Result.failure(ErrorResponse error)=Error;
 
 }
