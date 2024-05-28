@@ -1,12 +1,11 @@
+import 'package:c_market_app/presentation/pages/detail/s_review_page.dart';
 import 'package:flutter/material.dart';
 
-import 's_review_add_page.dart';
-
-class ReviewAppBar extends StatelessWidget implements PreferredSizeWidget{
+class AddAppBar extends StatelessWidget implements PreferredSizeWidget{
   final String title;
 
 
-  const ReviewAppBar({super.key, required this.title});
+  const AddAppBar({super.key, required this.title});
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -23,11 +22,12 @@ class ReviewAppBar extends StatelessWidget implements PreferredSizeWidget{
       title: Text(title),
       actions: [
         IconButton(
-          icon: Icon(Icons.add_box_outlined),
+          icon: Icon(Icons.check),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => ReviewAddPage(),
+                builder: (BuildContext context) => ReviewPage(),
                 fullscreenDialog: true));
+
           },
         ),
       ],

@@ -5,8 +5,8 @@ import 'package:c_market_app/presentation/pages/splash/splash_page.dart';
 import 'package:c_market_app/presentation/routes/route_path.dart';
 import 'package:go_router/go_router.dart';
 
+import '../pages/detail/s_review_add_page.dart';
 import '../pages/detail/s_review_page.dart';
-
 
 final GoRouter router = GoRouter(
   routes: [
@@ -34,6 +34,11 @@ final GoRouter router = GoRouter(
       path: RoutePath.detail,
       name: 'detail',
       builder: (context, state) => const DetailPage(),
+    ),
+    GoRoute(
+      path: RoutePath.review_add,
+      name: 'review_add',
+      builder: (context, state) => const ReviewAddPage(),
     ),
   ],
   initialLocation: '/detail',
