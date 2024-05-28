@@ -11,32 +11,28 @@ class ReviewBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '리뷰',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Divider(),
+          // 유저 이름 텍스트
+          Text('${userName}'),
+          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          // 날짜 텍스트
+          Text(
+            '$date',
+            style: TextStyle(fontSize: 10),
           ),
-        ),
-        Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
-        // 유저 이름 텍스트
-        Text('${userName}'),
-        Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
-        // 날짜 텍스트
-        Text(
-          '$date',
-          style: TextStyle(fontSize: 10),
-        ),
-        Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
-        // 별점 아이콘들
-        SmallStars(starCount: starCount),
-        Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
-        // 후기 텍스트
-        Text('$comment'),
-      ]
+          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          // 별점 아이콘들
+          SmallStars(starCount: starCount),
+          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          // 후기 텍스트
+          Text('$comment'),
+        ]
+      ),
     );
   }
 }

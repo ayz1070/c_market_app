@@ -8,4 +8,6 @@ class RoutePath{
   /// main screen
   static const String main = '/';
 
+  static const String review = '/review';
+
 }
