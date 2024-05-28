@@ -1,3 +1,4 @@
+import 'package:c_market_app/presentation/pages/detail/s_review_page.dart';
 import 'package:c_market_app/presentation/pages/detail/w_detail_app_bar.dart';
 import 'package:c_market_app/presentation/pages/detail/w_review_box.dart';
 import 'package:c_market_app/presentation/pages/detail/w_small_stars.dart';
@@ -14,8 +15,6 @@ class DetailPage extends StatelessWidget {
       // 앱바
       appBar: DetailAppBar(
         title: '상품',
-        leftIcon: Icon(Icons.arrow_back_ios),
-        rightIcon: Icon(Icons.home_outlined),
       ),
       // 바디
       body: Padding(
@@ -110,7 +109,7 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             // 상품 정보 더보기 버튼
-            LongButton('상품정보 더 보기', onTap: (){}),
+            LongButton('상품정보 더 보기', onTap: () {}),
             Divider(),
             // 성분 텍스트
             Text(
@@ -126,13 +125,19 @@ class DetailPage extends StatelessWidget {
               '정제수, 글리세린, 부틸렌글라이콜, C13-16이소파라핀, 나이아신아마이드, C12-14아이소파라핀, 1,2-헥산디올, 하이드로제네이티드폴리데센, 펜틸렌글라이콜, 비닐디메치콘, 카프릴릴메치콘, 하이드록시에칠아크릴레이트/소듐아크릴로일디메칠타우레이트코폴리머, 판테놀, 아크릴레이트/C10-30알킬아크릴레이트크로스폴리머, 디메치콘올, 폴리메칠실세스퀴옥산, 트로메타민, 디포타슘글리시리제이트, 글리세릴아크릴레이트/아크릴릭애씨드코폴리머, 에칠헥실글리세린, 잔탄검, 디소듐이디티에이, 베타-글루칸, 병풀추출물, 마데카소사이드, 사과추출물, 에피갈로카테킨갈레이트, 아시아티코사이드, 아시아틱애씨드, 마데카식애씨드',
             ),
             Divider(),
-            ReviewBox(userName: '안영준', date: '24/05/28', comment: '너무 좋아요!!', starCount: 3,),
+            ReviewBox(userName: '안영준',
+              date: '24/05/28',
+              comment: '너무 좋아요!!',
+              starCount: 3,),
             // 리뷰 더 더 보기 버튼
             Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
-
             LongButton(
-              '리뷰 더 보기',
-              onTap: () {},
+                '리뷰 더 보기',
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => ReviewPage(),
+                      fullscreenDialog: true));
+                },
             ),
           ],
         ),
