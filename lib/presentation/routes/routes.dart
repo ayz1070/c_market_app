@@ -1,8 +1,10 @@
 import 'package:c_market_app/presentation/main/main_screen.dart';
 import 'package:c_market_app/presentation/pages/cart/cart_page.dart';
+import 'package:c_market_app/presentation/pages/detail/detail_page.dart';
 import 'package:c_market_app/presentation/pages/splash/splash_page.dart';
 import 'package:c_market_app/presentation/routes/route_path.dart';
 import 'package:go_router/go_router.dart';
+
 
 final GoRouter router = GoRouter(
   routes: [
@@ -24,3 +26,4 @@ final GoRouter router = GoRouter(
   ],
   initialLocation: '/splash',
 );
+
