@@ -10,4 +10,6 @@ class RoutePath{
 
   static const String review = '/review';
 
+  static const String review_add = '/review_add';
+
 }
