@@ -7,6 +7,8 @@ import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:c_market_app/service_locator.dart';
 import 'package:flutter/material.dart';
 
+import 'core/theme/theme_data.dart';
+
 void main() async{
   final data = await DisplayMockApi().getMenusByMallType('market');
   final data2 = await DisplayRepositoryImpl(DisplayMockApi()).getMenuByMallType(mallType: MallType.market);
@@ -29,7 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: router
+      routerConfig: router,
+      theme: CustomThemeData.themeData,
     );
   }
 }
