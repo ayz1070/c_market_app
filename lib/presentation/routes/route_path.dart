@@ -12,4 +12,6 @@ class RoutePath{
 
   static const String review_add = '/review_add';
 
+  static const String notification = '/notification';
+
 }

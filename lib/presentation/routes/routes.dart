@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../pages/detail/s_review_add_page.dart';
 import '../pages/detail/s_review_page.dart';
+import '../pages/notification/notification_page.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -39,6 +40,11 @@ final GoRouter router = GoRouter(
       path: RoutePath.review_add,
       name: 'review_add',
       builder: (context, state) => const ReviewAddPage(),
+    ),
+    GoRoute(
+      path: RoutePath.notification,
+      name: 'notification',
+      builder: (context, state) => const NotificationPage(),
     ),
   ],
   initialLocation: '/splash',
