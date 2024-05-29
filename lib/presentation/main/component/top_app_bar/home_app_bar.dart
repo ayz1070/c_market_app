@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // ToDo: RoutePath.notification로 이동
+                  context.push(RoutePath.notification);
                 },),
           ),
           Padding(
