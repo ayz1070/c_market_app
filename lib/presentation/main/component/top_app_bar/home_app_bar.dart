@@ -21,18 +21,31 @@ class HomeAppBar extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: SvgPicture.asset(
-              AppIcons.notification,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.surface,
-                BlendMode.srcIn,
+            child: GestureDetector(
+              child: SvgPicture.asset(
+                AppIcons.notification,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.surface,
+                  BlendMode.srcIn,
+                ),
               ),
-            ),
+              onTap: () {
+                context.push(RoutePath.notification);
+              },),
           ),
           Padding(
-            padding: const EdgeInsets.all(0),
-            child: IconButton(
-                onPressed: () => context.push(RoutePath.cart), icon: Icon(Icons.shopping_cart, color: Colors.white,),
+            padding: const EdgeInsets.all(4.0),
+            child: GestureDetector(
+              child: SvgPicture.asset(
+                AppIcons.cart,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.surface,
+                  BlendMode.srcIn,
+                ),
+              ),
+              onTap: () {
+                context.push(RoutePath.cart);
+              },
             ),
           ),
         ],
