@@ -1,9 +1,10 @@
 import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
-import 'package:c_market_app/data/dto/menu/menu.dto.dart';
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../dto/display/menu/menu.dto.dart';
 
 part 'display.api.g.dart';
 

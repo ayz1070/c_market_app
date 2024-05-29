@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:c_market_app/data/data_source/mock/display/display_mock_data.dart';
 import 'package:c_market_app/data/data_source/remote/display.api.dart';
 import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
-import 'package:c_market_app/data/dto/menu/menu.dto.dart';
+
+import '../../../dto/display/menu/menu.dto.dart';
 
 class DisplayMockApi implements DisplayApi {
   @override
