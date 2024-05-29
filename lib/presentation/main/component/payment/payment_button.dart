@@ -39,6 +39,7 @@ class PaymentButton extends StatelessWidget {
               selectedCartList.isNotEmpty
                   ? '${totalPrice.toWon()} 결제하기'
                   : '상품을 선택해주세요',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
