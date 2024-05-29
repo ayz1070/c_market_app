@@ -32,7 +32,7 @@ class DisplayMockApi implements DisplayApi {
   }
 
   @override
-  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(Int mallType) {
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(int tabId, int page) {
     // TODO: implement getViewModulesByTabId
     throw UnimplementedError();
   }
