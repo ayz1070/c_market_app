@@ -37,6 +37,7 @@ class CartPage extends StatelessWidget {
       ),
       bottomNavigationBar: SafeArea(
         child: PaymentButton(
+          //Todo 리스트 수정
           selectedCartList: selectedCartList,
           totalPrice: 5000,
         ),

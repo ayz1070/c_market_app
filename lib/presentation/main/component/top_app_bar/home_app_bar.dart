@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../routes/route_path.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -28,13 +30,9 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: SvgPicture.asset(
-              AppIcons.cart,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.surface,
-                BlendMode.srcIn,
-              ),
+            padding: const EdgeInsets.all(0),
+            child: IconButton(
+                onPressed: () => context.push(RoutePath.cart), icon: Icon(Icons.shopping_cart, color: Colors.white,),
             ),
           ),
         ],
