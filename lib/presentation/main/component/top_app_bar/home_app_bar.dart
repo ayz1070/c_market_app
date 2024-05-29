@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/constant/app_icons.dart';
+import '../../../routes/route_path.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -19,22 +21,31 @@ class HomeAppBar extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: SvgPicture.asset(
-              AppIcons.notification,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.surface,
-                BlendMode.srcIn,
-              ),
-            ),
+            child: GestureDetector(
+                child: SvgPicture.asset(
+                  AppIcons.notification,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surface,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                onTap: () {
+                  // ToDo: RoutePath.notification로 이동
+                },),
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
-            child: SvgPicture.asset(
-              AppIcons.cart,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.surface,
-                BlendMode.srcIn,
+            child: GestureDetector(
+              child: SvgPicture.asset(
+                AppIcons.cart,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.surface,
+                  BlendMode.srcIn,
+                ),
               ),
+              onTap: () {
+                context.push(RoutePath.cart);
+              },
             ),
           ),
         ],
