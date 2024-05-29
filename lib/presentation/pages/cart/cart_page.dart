@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/theme/constant/app_colors.dart';
 import '../../../core/theme/custom/custom_font_weight.dart';
 import '../../../core/theme/custom/custom_theme.dart';
 import '../../main/component/payment/payment_button.dart';
@@ -16,6 +17,7 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.onPrimary,
         leading: Center(
           child: IconButton(
             icon: Icon(Icons.close),
