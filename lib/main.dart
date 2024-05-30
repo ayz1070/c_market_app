@@ -5,10 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/theme/theme_data.dart';
+import 'data/entity/display/product_info/product_info.entity.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
 
 void main() async{
   await Hive.initFlutter();
+  
+  Hive.registerAdapter(ProductInfoEntityAdapter());
+
   setLocator();
   runApp(const MyApp());
 }
