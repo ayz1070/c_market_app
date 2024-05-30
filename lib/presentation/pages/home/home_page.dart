@@ -7,7 +7,7 @@ import '../../../domain/usecase/base/display/display.usecase.dart';
 import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
-import 'component/global_nav_bar.dart';
+import 'component/global_nav/global_nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
