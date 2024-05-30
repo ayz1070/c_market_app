@@ -23,10 +23,14 @@ class GlobalNavBarView extends StatelessWidget {
             children: List.generate(
               state.menus.length,
               (index) {
+                final tabId = menus[index].tabId;
+
                 return BlocProvider(
                   create: (_) => getIt<ViewModuleBloc>()
-                    ..add(ViewModuleInitialized(tabId: menus[index].tabId)),
-                  child: const ViewModuleList(),
+                    ..add(
+                      ViewModuleInitialized(tabId: tabId),
+                    ),
+                  child: ViewModuleList(tabId: tabId),
                 );
               },
             ),
@@ -36,5 +40,3 @@ class GlobalNavBarView extends StatelessWidget {
     );
   }
 }
-
-
