@@ -2,11 +2,13 @@ import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:c_market_app/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/theme/theme_data.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
 
-void main(){
+void main() async{
+  await Hive.initFlutter();
   setLocator();
   runApp(const MyApp());
 }
