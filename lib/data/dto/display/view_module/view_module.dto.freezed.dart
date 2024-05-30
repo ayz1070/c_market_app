@@ -14,12 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+
 ViewModuleDto _$ViewModuleDtoFromJson(Map<String, dynamic> json) {
   return _ViewModuleDto.fromJson(json);
 }
 
 /// @nodoc
 mixin _$ViewModuleDto {
+
   String get type => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get subtitle => throw _privateConstructorUsedError;
@@ -38,6 +40,7 @@ abstract class $ViewModuleDtoCopyWith<$Res> {
       _$ViewModuleDtoCopyWithImpl<$Res, ViewModuleDto>;
   @useResult
   $Res call({String type, String title, String subtitle, String imageUrl});
+
 }
 
 /// @nodoc
@@ -75,6 +78,7 @@ class _$ViewModuleDtoCopyWithImpl<$Res, $Val extends ViewModuleDto>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+
     ) as $Val);
   }
 }
@@ -96,6 +100,7 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
     implements _$$ViewModuleDtoImplCopyWith<$Res> {
   __$$ViewModuleDtoImplCopyWithImpl(
       _$ViewModuleDtoImpl _value, $Res Function(_$ViewModuleDtoImpl) _then)
+
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,6 +128,7 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+
     ));
   }
 }
@@ -162,6 +168,7 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ViewModuleDtoImpl &&
+
             (identical(other.type, type) || other.type == type) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subtitle, subtitle) ||
@@ -172,7 +179,9 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
 
   @JsonKey(ignore: true)
   @override
+
   int get hashCode => Object.hash(runtimeType, type, title, subtitle, imageUrl);
+
 
   @JsonKey(ignore: true)
   @override
@@ -183,6 +192,7 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
   @override
   Map<String, dynamic> toJson() {
     return _$$ViewModuleDtoImplToJson(
+
       this,
     );
   }
@@ -209,5 +219,6 @@ abstract class _ViewModuleDto implements ViewModuleDto {
   @override
   @JsonKey(ignore: true)
   _$$ViewModuleDtoImplCopyWith<_$ViewModuleDtoImpl> get copyWith =>
+
       throw _privateConstructorUsedError;
 }

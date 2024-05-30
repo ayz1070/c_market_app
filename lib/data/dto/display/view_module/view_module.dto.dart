@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+
 part 'view_module.dto.freezed.dart';
 
 part 'view_module.dto.g.dart';

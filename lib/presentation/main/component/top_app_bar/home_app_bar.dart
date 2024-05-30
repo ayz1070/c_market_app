@@ -22,16 +22,16 @@ class HomeAppBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: GestureDetector(
-                child: SvgPicture.asset(
-                  AppIcons.notification,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.surface,
-                    BlendMode.srcIn,
-                  ),
+              child: SvgPicture.asset(
+                AppIcons.notification,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.surface,
+                  BlendMode.srcIn,
                 ),
-                onTap: () {
-                  context.push(RoutePath.notification);
-                },),
+              ),
+              onTap: () {
+                context.push(RoutePath.notification);
+              },),
           ),
           Padding(
             padding: const EdgeInsets.all(4.0),
