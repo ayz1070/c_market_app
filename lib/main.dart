@@ -1,10 +1,5 @@
-import 'package:c_market_app/core/utils/constant.dart';
-import 'package:c_market_app/data/data_source/mock/display/display_mock_api.dart';
-import 'package:c_market_app/data/repository_impl/display.repository_impl.dart';
-import 'package:c_market_app/domain/usecase/base/display/display.usecase.dart';
-import 'package:c_market_app/domain/usecase/base/display/menu/get_menus.usecase.dart';
-import 'package:c_market_app/presentation/routes/routes.dart';
-import 'package:c_market_app/service_locator.dart';
+import 'presentation/routes/routes.dart';
+import 'service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
