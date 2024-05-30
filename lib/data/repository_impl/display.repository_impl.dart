@@ -6,6 +6,8 @@ import 'package:c_market_app/data/mapper/display.mapper.dart';
 import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
 import 'package:c_market_app/domain/repository/display.repository.dart';
 
+import '../../domain/model/display/cart/cart.model.dart';
+
 class DisplayRepositoryImpl implements DisplayRepository{
   final DisplayApi _displayApi;
 
@@ -19,6 +21,36 @@ class DisplayRepositoryImpl implements DisplayRepository{
     return response.toModel<List<Menu>>(
         response.data?.map((dto)=>dto.toModel()).toList() ?? []
     );
+  }
+
+  @override
+  Future<ResponseWrapper<List<Cart>>> addCartList({required Cart cart}) {
+    // TODO: implement addCartList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ResponseWrapper<List<Cart>>> changeCartQuantityByPrdId({required String productId, required int qty}) {
+    // TODO: implement changeCartQuantityByPrdId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ResponseWrapper<List<Cart>>> clearCartList() {
+    // TODO: implement clearCartList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ResponseWrapper<List<Cart>>> deleteCartByPrdId(List<String> productIds) {
+    // TODO: implement deleteCartByPrdId
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ResponseWrapper<List<Cart>>> getCartList() {
+    // TODO: implement getCartList
+    throw UnimplementedError();
   }
 
 }
