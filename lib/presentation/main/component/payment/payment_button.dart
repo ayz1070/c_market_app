@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/constant.dart';
 import '../../../../core/utils/extensions.dart';
+import '../../../../domain/model/display/cart/cart.model.dart';
+import '../../bloc/payment_bloc/payment_bloc.dart';
 
 class PaymentButton extends StatelessWidget {
-  //Todo List타입을 Cart로 바꿔야함
-  final List<String> selectedCartList;
+  final List<Cart> selectedCartList;
   final int totalPrice;
 
 
@@ -21,7 +23,14 @@ class PaymentButton extends StatelessWidget {
       child: SizedBox(
         height: 48,
         child: TextButton(
-          onPressed: null,
+          onPressed: selectedCartList.isNotEmpty ? (){
+            context.read<PaymentBloc>().add(
+              PayMoney(
+                cartList: selectedCartList,
+                context: context,
+              ),
+            );
+          }: null,
           style: TextButton.styleFrom(
             backgroundColor: selectedCartList.isNotEmpty
                 ? Theme.of(context).colorScheme.primary
@@ -39,7 +48,9 @@ class PaymentButton extends StatelessWidget {
               selectedCartList.isNotEmpty
                   ? '${totalPrice.toWon()} 결제하기'
                   : '상품을 선택해주세요',
-              style: TextStyle(color: Colors.white),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
             ),
           ),
         ),
