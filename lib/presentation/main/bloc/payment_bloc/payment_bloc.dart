@@ -32,7 +32,36 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   Future<void> _onPayMoney(
     PayMoney event,
     Emitter<PaymentState> emit,
-  ) async {}
+  ) async{
+    emit(
+      state.copyWith(status: PaymentStatus.initial,
+      ),
+    );
+    Payload payload = _getPayLoad(event.cartList);
+    
+    var (isSuccess, data) = await _bootPay(event.context, payload);
+    
+    if(isSuccess){
+      emit(
+        state.copyWith(
+          status: PaymentStatus.success,
+          productIds: event.cartList.map((cart) => cart.product.productId).toList(),
+        ),
+      );
+    } else {
+      var message = "결제가 실패했습니다. 잠시 후 다시 시도해주세요.";
+      if(data != null){
+        var decoded = jsonDecode(data);
+        message = decoded['message'] ?? message;
+      }
+
+      emit(
+        state.copyWith(status: PaymentStatus.error,
+          message: message,
+        ),
+      );
+    }
+  }
 }
 
 Future<(bool, String?)> _bootPay(BuildContext context, Payload payload) async {
@@ -82,8 +111,8 @@ Payload _getPayLoad(List<Cart> cartList) {
     return item;
   }).toList();
 
-  payload.androidApplicationId = "";
-  payload.iosApplicationId = "";
+  payload.androidApplicationId = "6656868ada291fb9231e1219";
+  payload.iosApplicationId = "6656868ada291fb9231e121a";
 
   payload.pg = 'kcp';
   payload.orderName = cartList.length > 1
