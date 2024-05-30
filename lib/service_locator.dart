@@ -5,11 +5,15 @@ import 'package:c_market_app/domain/repository/display.repository.dart';
 import 'package:c_market_app/domain/usecase/base/display/display.usecase.dart';
 import 'package:get_it/get_it.dart';
 
+import 'presentation/pages/home/bloc/menu_bloc/menu_bloc.dart';
+import 'presentation/pages/home/bloc/view_module_bloc/view_module_bloc.dart';
+
 final locator = GetIt.instance;
 
 void setLocator(){
   _data();
   _domain();
+  _presentation();
 }
 
 void _data(){
@@ -18,11 +22,17 @@ void _data(){
 
 void _domain(){
   locator.registerSingleton<DisplayRepository>(
-      DisplayRepositoryImpl(locator<DisplayApi>())
+      DisplayRepositoryImpl(locator<DisplayApi>()),
   );
 
   //usecase
   locator.registerSingleton<DisplayUsecase>(
-      DisplayUsecase(locator<DisplayRepository>())
+      DisplayUsecase(locator<DisplayRepository>()),
   );
+}
+
+void _presentation(){
+  locator.registerFactory(() => MenuBloc(locator<DisplayUsecase>()));
+  
+  locator.registerFactory(() => ViewModuleBloc(locator<DisplayUsecase>()));
 }

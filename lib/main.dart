@@ -15,7 +15,7 @@ import 'presentation/main/cubit/mall_type_cubit.dart';
 void main() async{
   setLocator();
 
-  final data = await locator<DisplayApi>().getViewModulesByTabId(10001);
+  final data = await locator<DisplayApi>().getViewModulesByTabId(10001,1);
   print(data);
 
   runApp(const MyApp());
