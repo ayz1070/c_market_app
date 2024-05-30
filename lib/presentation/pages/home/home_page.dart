@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
-import '../../../service_locator.dart';
+import '../../../dependency_injection.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       builder: (_, state) {
         return BlocProvider(
           create: (_) =>
-              locator<MenuBloc>()..add(MenuInitialized(mallType: state)),
+              getIt<MenuBloc>()..add(MenuInitialized(mallType: state)),
           child: const HomePageView(),
         );
       },
@@ -42,9 +42,9 @@ class HomePageView extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             case Status.success:
               return DefaultTabController(
-                animationDuration: const Duration(milliseconds: 300),
                 length: state.menus.length,
                 child: GlobalNavBar(state.menus),
+                animationDuration: const Duration(milliseconds: 300),
               );
             case Status.error:
               return const Center(child: Text('error'));
