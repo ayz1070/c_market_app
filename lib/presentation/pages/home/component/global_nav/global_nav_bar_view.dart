@@ -7,6 +7,7 @@ import '../../../../../domain/usecase/base/display/display.usecase.dart';
 import '../../../../../service_locator.dart';
 import '../../bloc/menu_bloc/menu_bloc.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
+import '../view_module_list/view_module_list.dart';
 
 class GlobalNavBarView extends StatelessWidget {
   const GlobalNavBarView(this.mallType, this.menus, {super.key});
@@ -37,43 +38,4 @@ class GlobalNavBarView extends StatelessWidget {
   }
 }
 
-class ViewModuleList extends StatelessWidget {
-  const ViewModuleList({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ViewModuleBloc, ViewModuleState>(builder: (_, state) {
-      switch (state.status) {
-        case Status.initial:
-        case Status.loading:
-          return const Center(child: CircularProgressIndicator());
-        case Status.success:
-          return Column(
-            children: [
-              Container(
-                color: Colors.deepOrangeAccent,
-                height: 50,
-                child: Center(child: Text('${state.tabId}')),
-              ),
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (_, index) {
-                    return SizedBox(
-                      height: 200,
-                      child: Center(
-                        child: Text('${state.viewModules[index].type}'),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (_, index) => Divider(thickness: 4),
-                  itemCount: state.viewModules.length,
-                ),
-              ),
-            ],
-          );
-        case Status.error:
-          return const Center(child: Text('error'));
-      }
-    });
-  }
-}
