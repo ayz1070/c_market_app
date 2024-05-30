@@ -4,6 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../dto/display/display.dto.dart';
 import '../../dto/display/menu/menu.dto.dart';
 
 part 'display.api.g.dart';
@@ -14,6 +15,11 @@ abstract class DisplayApi {
 
   @GET('/api/menus/{mall_type}')
   Future<ResponseWrapper<List<MenuDto>>> getMenusByMallType(
-      @Path('mall_type') String mallType
-      );
+    @Path('mall_type') String mallType,
+  );
+
+  @GET('/api/view-modules/{tab_id}')
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(
+    @Path('tab_id') int mallType,
+  );
 }

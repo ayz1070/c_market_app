@@ -9,10 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/theme/theme_data.dart';
+import 'data/data_source/remote/display.api.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
 
-void main(){
+void main() async{
   setLocator();
+
+  final data = await locator<DisplayApi>().getViewModulesByTabId(10001);
+  print(data);
+
   runApp(const MyApp());
 }
 
