@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import '../../../../../core/utils/constant.dart';
@@ -26,6 +27,7 @@ EventTransformer<E> _throttleDroppable<E>(Duration duration) {
   };
 }
 
+@injectable
 class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
   final DisplayUsecase _displayUsecase;
 
@@ -38,18 +40,29 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
   }
 
   Future<void> _onViewModuleInitialized(
-    ViewModuleInitialized event,
-    Emitter<ViewModuleState> emit,
-  ) async {
-    emit(state.copyWith(status: Status.loading));
-    final tabId = event.tabId;
+      ViewModuleInitialized event,
+      Emitter<ViewModuleState> emit,
+      ) async {
     try {
+      emit(state.copyWith(status: Status.loading));
+
+      final tabId = event.tabId;
+
+      if (event.isRefresh) {
+        emit(state.copyWith(
+          status: Status.initial,
+          currentPage: 1,
+          isEndOfPage: false,
+          viewModules: [],
+        ));
+      }
+
       final response = await _fetch(tabId: tabId);
       response.when(
         success: (data) {
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
           final List<Widget> viewModules =
-              data.map((e) => viewModuleFactory.textToWidget(e)).toList();
+          data.map((e) => viewModuleFactory.textToWidget(e)).toList();
           emit(state.copyWith(
             status: Status.success,
             tabId: tabId,
@@ -80,8 +93,8 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     );
   }
 
-  Future<void> _onViewModuleFetched(
-      ViewModuleFetched event, Emitter<ViewModuleState> emit) async {
+  Future<void> _onViewModuleFetched(ViewModuleFetched event,
+      Emitter<ViewModuleState> emit) async {
     // 끝 페이지에 도달했다면 리턴
     if (state.isEndOfPage) return;
     final nextPage = state.currentPage + 1;
@@ -105,7 +118,7 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
           viewModules.addAll(List.generate(
             data.length,
-            (index) => viewModuleFactory.textToWidget(data[index]),
+                (index) => viewModuleFactory.textToWidget(data[index]),
           ));
 
           emit(state.copyWith(

@@ -5,7 +5,9 @@ import '../../../../../core/utils/extensions.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 
 class ViewModuleList extends StatefulWidget {
-  const ViewModuleList({super.key});
+  final int tabId;
+
+  const ViewModuleList({required this.tabId, super.key});
 
   @override
   State<ViewModuleList> createState() => _ViewModuleListState();
@@ -20,18 +22,18 @@ class _ViewModuleListState extends State<ViewModuleList> {
     scrollController.addListener(_onScroll);
   }
 
+  void _onScroll() {
+    if (_isEnd) {
+      context.read<ViewModuleBloc>().add(ViewModuleFetched());
+    }
+  }
+
   @override
   void dispose() {
     scrollController
       ..removeListener(_onScroll)
       ..dispose();
     super.dispose();
-  }
-
-  void _onScroll() {
-    if (_isEnd) {
-      context.read<ViewModuleBloc>().add(ViewModuleFetched());
-    }
   }
 
   bool get _isEnd {
@@ -42,34 +44,20 @@ class _ViewModuleListState extends State<ViewModuleList> {
     return curScroll >= maxScroll * 0.9;
   }
 
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ViewModuleBloc, ViewModuleState>(
-      builder: (_, state) {
+    return RefreshIndicator(
+      child: BlocBuilder<ViewModuleBloc, ViewModuleState>(builder: (_, state) {
         return (state.status.isInitial || state.viewModules.isEmpty)
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView(
-          controller: scrollController,
-                children: [
-                  ...state.viewModules,
-                  if (state.status.isLoading) LoadingWidget(),
-                ],
-              );
-        // switch (state.status) {
-        //   case Status.initial:
-        //   case Status.loading:
-        //     return const Center(child: CircularProgressIndicator());
-        //   case Status.success:
-        //     return ListView.separated(
-        //       itemBuilder: (_, index) => state.viewModules[index],
-        //       separatorBuilder: (_, index) => Divider(thickness: 4),
-        //       itemCount: state.viewModules.length,
-        //     );
-        //   case Status.error:
-        //     return const Center(child: Text('error'));
-        // }
-      },
+            ? Center(child: CircularProgressIndicator())
+            : ListView(controller: scrollController, children: [
+                ...state.viewModules,
+                if (state.status.isLoading) LoadingWidget(),
+              ]);
+      }),
+      onRefresh: () async => context
+          .read<ViewModuleBloc>()
+          .add(ViewModuleInitialized(tabId: widget.tabId, isRefresh: true)),
     );
   }
 }
