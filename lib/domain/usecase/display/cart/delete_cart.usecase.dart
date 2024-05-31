@@ -4,12 +4,15 @@ import '../../../model/common/result.dart';
 import '../../../repository/display.repository.dart';
 import '../../base/local.usecase.dart';
 
-class GetCartListUsecase extends LocalUsecase<DisplayRepository> {
-  GetCartListUsecase();
+class DeleteCartUsecase extends LocalUsecase<DisplayRepository> {
+
+  final List<String> productIds;
+
+  DeleteCartUsecase({required this.productIds});
 
   @override
   Future call(DisplayRepository repository) async {
-    final result = await repository.getCartList();
+    final result = await repository.deleteCartByPrdId(productIds);
 
     return (result.status.isSuccess)
         ? Result.success(result.data)
