@@ -8,9 +8,9 @@ import '../../../../../core/utils/exception/common_exception.dart';
 import '../../../../../core/utils/logger.dart';
 import '../../../../../domain/model/common/result.dart';
 import '../../../../../domain/model/display/menu/menu.model.dart';
-import '../../../../../domain/usecase/base/display/menu/get_menus.usecase.dart';
-import '../../../../../domain/usecase/base/display/display.usecase.dart';
-import '../../../../../domain/usecase/base/display/menu/get_menus.usecase.dart';
+import '../../../../../domain/usecase/display/menu/get_menus.usecase.dart';
+import '../../../../../domain/usecase/display/display.usecase.dart';
+import '../../../../../domain/usecase/display/menu/get_menus.usecase.dart';
 
 part 'menu_event.dart';
 

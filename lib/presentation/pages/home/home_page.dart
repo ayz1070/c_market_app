@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
-import '../../../domain/usecase/base/display/display.usecase.dart';
+import '../../../domain/usecase/display/display.usecase.dart';
 import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
