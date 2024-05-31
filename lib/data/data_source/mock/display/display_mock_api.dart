@@ -1,30 +1,35 @@
 import 'dart:convert';
-import 'dart:ffi';
 
-import 'package:c_market_app/data/data_source/mock/display/display_mock_data.dart';
-import 'package:c_market_app/data/data_source/remote/display.api.dart';
-import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
+import '../../../dto/common/response_wrapper/response_wrapper.dart';
 
-
-import '../../../dto/display/menu/menu.dto.dart';
-import '../../../dto/display/view_module/view_module.dto.dart';
-
+import '../../../dto/display/display.dto.dart';
+import '../../remote/display.api.dart';
+import 'display_mock_data.dart';
 
 class DisplayMockApi implements DisplayApi {
   @override
   Future<ResponseWrapper<List<MenuDto>>> getMenusByMallType(String mallType) {
-    return Future(
-          () =>
-          ResponseWrapper(
-            status: 'SUCCESS',
-            code: '0000',
-            message: '',
-            data: menuParser(
-              mallType == 'market'
-                  ? DisplayMockData.menusByMarket
-                  : DisplayMockData.menusByBeauty,
-            ),
-          ),
+    //error_test
+    // return Future(
+    //   () => ResponseWrapper(
+    //     status: 'FAIL',
+    //     code: 'GNB-0000',
+    //     message: '일시적인 오류가 발생했습니다.\n 잠시 후에 다시 시도해주세요.',
+    //   ),
+    // );
+
+    return Future.delayed(
+      const Duration(milliseconds: 400),
+          () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: '',
+        data: menuParser(
+          mallType == 'market'
+              ? DisplayMockData.menusByMarket
+              : DisplayMockData.menusByBeauty,
+        ),
+      ),
     );
   }
 
@@ -33,48 +38,39 @@ class DisplayMockApi implements DisplayApi {
       int tabId,
       int page,
       ) {
-
-    if(page == 4) {
-      return Future(
-            () =>
-            ResponseWrapper(
-              status: 'SUCCESS',
-              code: '0000',
-              message: '',
-              data: [],
-            ),
+    if (page == 4) {
+      return Future.delayed(
+        Duration(milliseconds: 800),
+            () => ResponseWrapper(
+          status: 'SUCCESS',
+          code: '0000',
+          message: '',
+          data: [],
+        ),
       );
     }
 
-    final endOfTabId = tabId % 10;
-    late String source;
-    switch (endOfTabId) {
-      case 1:
-        source = DisplayMockData.viewModulesByTabIdCaseOne;
-      case 2:
-        source = DisplayMockData.viewModulesByTabIdCaseTwo;
-      case 3:
-        source = DisplayMockData.viewModulesByTabIdCaseThree;
-    }
+    String source = DisplayMockData.getViewModules();
 
-    return Future(
-          () =>
-          ResponseWrapper(
-              status: 'SUCCESS',
-              code: '0000',
-              message: '',
-              data: viewModuleParser(source),
-          ),
+    return Future.delayed(
+      Duration(milliseconds: 800),
+          () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: '',
+        data: viewModuleParser(source),
+      ),
     );
   }
 
+  // parsers
   List<MenuDto> menuParser(String source) {
     List<MenuDto> menus = [];
     final List json = jsonDecode(source);
     menus = json.map((e) => MenuDto.fromJson(e)).toList();
+
     return menus;
   }
-
 
   List<ViewModuleDto> viewModuleParser(String source) {
     List<ViewModuleDto> viewModules = [];
@@ -84,4 +80,3 @@ class DisplayMockApi implements DisplayApi {
     return viewModules;
   }
 }
-  

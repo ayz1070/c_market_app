@@ -14,18 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-
 ViewModuleDto _$ViewModuleDtoFromJson(Map<String, dynamic> json) {
   return _ViewModuleDto.fromJson(json);
 }
 
 /// @nodoc
 mixin _$ViewModuleDto {
-
   String get type => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get subtitle => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  int? get time => throw _privateConstructorUsedError;
+  List<ProductInfoDto>? get products => throw _privateConstructorUsedError;
+  List<String>? get tabs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,8 +40,14 @@ abstract class $ViewModuleDtoCopyWith<$Res> {
           ViewModuleDto value, $Res Function(ViewModuleDto) then) =
       _$ViewModuleDtoCopyWithImpl<$Res, ViewModuleDto>;
   @useResult
-  $Res call({String type, String title, String subtitle, String imageUrl});
-
+  $Res call(
+      {String type,
+      String title,
+      String subtitle,
+      String imageUrl,
+      int? time,
+      List<ProductInfoDto>? products,
+      List<String>? tabs});
 }
 
 /// @nodoc
@@ -60,6 +67,9 @@ class _$ViewModuleDtoCopyWithImpl<$Res, $Val extends ViewModuleDto>
     Object? title = null,
     Object? subtitle = null,
     Object? imageUrl = null,
+    Object? time = freezed,
+    Object? products = freezed,
+    Object? tabs = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -78,7 +88,18 @@ class _$ViewModuleDtoCopyWithImpl<$Res, $Val extends ViewModuleDto>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as int?,
+      products: freezed == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfoDto>?,
+      tabs: freezed == tabs
+          ? _value.tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -91,7 +112,14 @@ abstract class _$$ViewModuleDtoImplCopyWith<$Res>
       __$$ViewModuleDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type, String title, String subtitle, String imageUrl});
+  $Res call(
+      {String type,
+      String title,
+      String subtitle,
+      String imageUrl,
+      int? time,
+      List<ProductInfoDto>? products,
+      List<String>? tabs});
 }
 
 /// @nodoc
@@ -100,7 +128,6 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
     implements _$$ViewModuleDtoImplCopyWith<$Res> {
   __$$ViewModuleDtoImplCopyWithImpl(
       _$ViewModuleDtoImpl _value, $Res Function(_$ViewModuleDtoImpl) _then)
-
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,6 +137,9 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
     Object? title = null,
     Object? subtitle = null,
     Object? imageUrl = null,
+    Object? time = freezed,
+    Object? products = freezed,
+    Object? tabs = freezed,
   }) {
     return _then(_$ViewModuleDtoImpl(
       type: null == type
@@ -128,7 +158,18 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as int?,
+      products: freezed == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfoDto>?,
+      tabs: freezed == tabs
+          ? _value._tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -140,7 +181,12 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
       {this.type = '',
       this.title = '',
       this.subtitle = '',
-      this.imageUrl = ''});
+      this.imageUrl = '',
+      this.time = -1,
+      final List<ProductInfoDto>? products = const <ProductInfoDto>[],
+      final List<String>? tabs = const []})
+      : _products = products,
+        _tabs = tabs;
 
   factory _$ViewModuleDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ViewModuleDtoImplFromJson(json);
@@ -157,10 +203,34 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
   @override
   @JsonKey()
   final String imageUrl;
+  @override
+  @JsonKey()
+  final int? time;
+  final List<ProductInfoDto>? _products;
+  @override
+  @JsonKey()
+  List<ProductInfoDto>? get products {
+    final value = _products;
+    if (value == null) return null;
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _tabs;
+  @override
+  @JsonKey()
+  List<String>? get tabs {
+    final value = _tabs;
+    if (value == null) return null;
+    if (_tabs is EqualUnmodifiableListView) return _tabs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ViewModuleDto(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl)';
+    return 'ViewModuleDto(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, time: $time, products: $products, tabs: $tabs)';
   }
 
   @override
@@ -168,20 +238,28 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ViewModuleDtoImpl &&
-
             (identical(other.type, type) || other.type == type) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subtitle, subtitle) ||
                 other.subtitle == subtitle) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            (identical(other.time, time) || other.time == time) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality().equals(other._tabs, _tabs));
   }
 
   @JsonKey(ignore: true)
   @override
-
-  int get hashCode => Object.hash(runtimeType, type, title, subtitle, imageUrl);
-
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      title,
+      subtitle,
+      imageUrl,
+      time,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_tabs));
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +270,6 @@ class _$ViewModuleDtoImpl implements _ViewModuleDto {
   @override
   Map<String, dynamic> toJson() {
     return _$$ViewModuleDtoImplToJson(
-
       this,
     );
   }
@@ -203,7 +280,10 @@ abstract class _ViewModuleDto implements ViewModuleDto {
       {final String type,
       final String title,
       final String subtitle,
-      final String imageUrl}) = _$ViewModuleDtoImpl;
+      final String imageUrl,
+      final int? time,
+      final List<ProductInfoDto>? products,
+      final List<String>? tabs}) = _$ViewModuleDtoImpl;
 
   factory _ViewModuleDto.fromJson(Map<String, dynamic> json) =
       _$ViewModuleDtoImpl.fromJson;
@@ -217,8 +297,13 @@ abstract class _ViewModuleDto implements ViewModuleDto {
   @override
   String get imageUrl;
   @override
+  int? get time;
+  @override
+  List<ProductInfoDto>? get products;
+  @override
+  List<String>? get tabs;
+  @override
   @JsonKey(ignore: true)
   _$$ViewModuleDtoImplCopyWith<_$ViewModuleDtoImpl> get copyWith =>
-
       throw _privateConstructorUsedError;
 }

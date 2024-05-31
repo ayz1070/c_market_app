@@ -6,11 +6,15 @@ class DisplayMockData {
       '[{"title":"마켓추천","tabId":20001},,{"title":"신상품","tabId":20003},{"title":"베스트","tabId":20004},{"title":"브랜드관","tabId":20005}]';
 
   static final String viewModulesByTabIdCaseOne =
-      '[{"type":"ViewModuleA"},{"type":"ViewModuleB"},{"type":"ViewModuleC"}]';
+      '[{"type":"ViewModuleA"},{"type":"ViewModuleB"},{"type":"ViewModuleC"},{"type":"ViewModuleD"},{"type":"ViewModuleE"}]';
   static final String viewModulesByTabIdCaseTwo =
-      '[{"type":"ViewModuleB"},{"type":"ViewModuleC"},{"type":"ViewModuleA"}]';
+      '[{"type":"ViewModuleB"},{"type":"ViewModuleC"},{"type":"ViewModuleD"},{"type":"ViewModuleE"},{"type":"ViewModuleA"}]';
   static final String viewModulesByTabIdCaseThree =
-      '[{"type":"ViewModuleC"},{"type":"ViewModuleA"},{"type":"ViewModuleB"}]';
+      '[{"type":"ViewModuleC"},{"type":"ViewModuleD"},{"type":"ViewModuleE"},{"type":"ViewModuleA"},{"type":"ViewModuleB"}]';
+  static final String viewModulesByTabIdCaseFour =
+      '[{"type":"ViewModuleD"},{"type":"ViewModuleE"},{"type":"ViewModuleA"},{"type":"ViewModuleB"},{"type":"ViewModuleC"}]';
+  static final String viewModulesByTabIdCaseFive =
+      '[{"type":"ViewModuleE"},{"type":"ViewModuleA"},{"type":"ViewModuleB"},{"type":"ViewModuleC"},{"type":"ViewModuleD"}]';
 
   static final String productInfo = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",

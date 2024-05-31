@@ -1,6 +1,5 @@
 import '../../../../core/utils/constant.dart';
 import '../../../../core/utils/error/error_response.dart';
-import '../../../../core/utils/extensions.dart';
 import '../../../model/common/result.dart';
 import '../../../model/display/menu/menu.model.dart';
 import '../../../repository/display.repository.dart';
@@ -13,16 +12,16 @@ class GetMenusUsecase extends RemoteUsecase<DisplayRepository> {
 
   @override
   Future<Result<List<Menu>>> call(DisplayRepository repository) async {
-    final result = await repository.getMenuByMallType(mallType: mallType);
+    final result = await repository.getMenusByMallType(mallType: mallType);
 
-    return (result.status.isSuccess)
+    return (result.status == 'SUCCESS')
         ? Result.success(result.data ?? [])
         : Result.failure(
-            ErrorResponse(
-              status: result.status,
-              code: result.code,
-              message: result.message,
-            ),
-          );
+      ErrorResponse(
+        status: result.status,
+        code: result.code,
+        message: result.message,
+      ),
+    );
   }
 }

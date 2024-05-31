@@ -6,19 +6,19 @@ part of 'product_info.model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductInfo _$$_ProductInfoFromJson(Map<String, dynamic> json) =>
-    _$_ProductInfo(
+_$ProductInfoImpl _$$ProductInfoImplFromJson(Map<String, dynamic> json) =>
+    _$ProductInfoImpl(
       productId: json['productId'] as String,
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
       imageUrl: json['imageUrl'] as String,
-      price: json['price'] as int,
-      originalPrice: json['originalPrice'] as int,
-      discrountRate: json['discrountRate'] as int,
-      reviewCount: json['reviewCount'] as int,
+      price: (json['price'] as num).toInt(),
+      originalPrice: (json['originalPrice'] as num).toInt(),
+      discrountRate: (json['discrountRate'] as num).toInt(),
+      reviewCount: (json['reviewCount'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$_ProductInfoToJson(_$_ProductInfo instance) =>
+Map<String, dynamic> _$$ProductInfoImplToJson(_$ProductInfoImpl instance) =>
     <String, dynamic>{
       'productId': instance.productId,
       'title': instance.title,
