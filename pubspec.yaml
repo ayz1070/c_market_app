@@ -50,6 +50,7 @@ dev_dependencies:
   injectable_generator: ^2.1.6
   json_serializable: ^6.7.1
   retrofit_generator: ^7.0.8
+  velocity_x: 
 
 flutter:
   uses-material-design: true

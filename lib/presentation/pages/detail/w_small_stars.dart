@@ -18,7 +18,7 @@ class _SmallStarsState extends State<SmallStars> {
         children: List.generate(widget.starCount, (index) {
           return Icon(
             index < widget.starCount ? Icons.star : Icons.star_border,
-            color: Colors.amber,
+            color: Colors.orange,
             size: 15,
           );
         }),

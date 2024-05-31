@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'w_add_app_bar.dart';
 import 'w_review_box_big.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ReviewAddPage extends StatefulWidget {
   const ReviewAddPage({super.key});
@@ -11,6 +12,7 @@ class ReviewAddPage extends StatefulWidget {
 }
 
 class _ReviewAddPageState extends State<ReviewAddPage> {
+  int reviewScore = 5;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +21,27 @@ class _ReviewAddPageState extends State<ReviewAddPage> {
       ),
       body: ListView(
         children: [
-          BigReviewBox(reviewAvg: 5, starCount: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(5, (index) {
+              return IconButton(
+                onPressed: () {
+                  setState(() {
+                    reviewScore = index;
+                  });
+                },
+                icon: Icon(
+                  Icons.star,
+                  color: index <= reviewScore ? Colors.orange : Colors.grey,
+                  size: 50,
+                ),
+              );
+            }),
+          ).pLTRB(0, 30, 0, 30),
           // 작성 부분
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // 상품명 텍스트
@@ -55,10 +72,7 @@ class _ReviewAddPageState extends State<ReviewAddPage> {
                     decoration: InputDecoration(
                       hintText: '리뷰를 작성하세요.',
                       border: OutlineInputBorder(),
-                      hintStyle: TextStyle(
-
-                      ),
-                      
+                      hintStyle: TextStyle(),
                     ),
                   ),
                 ),

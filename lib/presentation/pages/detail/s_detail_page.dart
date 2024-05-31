@@ -6,6 +6,8 @@ import 'package:c_market_app/presentation/widget/w_long_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'w_detail_bottom_app_bar.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
 
@@ -98,15 +100,14 @@ class DetailPage extends StatelessWidget {
             ),
             Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
             // 상품 상세 이미지 리스트
-            Expanded(
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return Image.asset('assets/image/test_image.jpg');
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/image/img_product_detail.png',
+                  width: 400,
+                ),
+              ],
             ),
             // 상품 정보 더보기 버튼
             LongButton('상품정보 더 보기', onTap: () {}),
@@ -140,6 +141,11 @@ class DetailPage extends StatelessWidget {
                 },
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        child: SafeArea(
+          child: DetailBottomAppBar(),
         ),
       ),
     );

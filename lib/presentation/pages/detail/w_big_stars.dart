@@ -14,11 +14,11 @@ class _BigStarsState extends State<BigStars> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(widget.starCount, (index) {
+      children: List.generate(5, (index) {
         return Icon(
-          index < widget.starCount ? Icons.star : Icons.star_border,
-          color: Colors.amber,
+          color: index <= widget.starCount ? Colors.orange : Colors.grey,
           size: 50,
+          Icons.star,
         );
       }),
     );

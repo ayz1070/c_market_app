@@ -1,5 +1,6 @@
 import 'package:c_market_app/presentation/pages/detail/w_big_stars.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class BigReviewBox extends StatelessWidget {
   final double reviewAvg;
@@ -18,10 +19,8 @@ class BigReviewBox extends StatelessWidget {
             BigStars(starCount: starCount),
             Padding(padding: EdgeInsets.only(top: 10)),
             // 평점
-            Text(
-              '$reviewAvg/5.0',
-              style: TextStyle(fontSize: 30),
-            ),
+            '$reviewAvg/5.0'.text.bold.size(30).make(),
+
           ],
         ),
       );
