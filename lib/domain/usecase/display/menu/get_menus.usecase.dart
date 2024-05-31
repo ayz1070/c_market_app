@@ -18,11 +18,11 @@ class GetMenusUsecase extends RemoteUsecase<DisplayRepository> {
     return (result.status.isSuccess)
         ? Result.success(result.data ?? [])
         : Result.failure(
-            ErrorResponse(
-              status: result.status,
-              code: result.code,
-              message: result.message,
-            ),
-          );
+      ErrorResponse(
+        status: result.status,
+        code: result.code,
+        message: result.message,
+      ),
+    );
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
 import '../../../dependency_injection.dart';
+import '../../../domain/usecase/display/display.usecase.dart';
+import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
       builder: (_, state) {
         return BlocProvider(
           create: (_) =>
-              getIt<MenuBloc>()..add(MenuInitialized(mallType: state)),
+          getIt<MenuBloc>()..add(MenuInitialized(mallType: state)),
           child: const HomePageView(),
         );
       },
@@ -53,7 +55,7 @@ class HomePageView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status == Status.error) {
             final bool result =
-                (await CommonDialog.errorDialog(context, state.error) ?? false);
+            (await CommonDialog.errorDialog(context, state.error) ?? false);
             if (result) {
               context
                   .read<MenuBloc>()

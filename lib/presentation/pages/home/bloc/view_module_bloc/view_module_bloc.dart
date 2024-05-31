@@ -11,7 +11,7 @@ import '../../../../../core/utils/exception/common_exception.dart';
 import '../../../../../core/utils/logger.dart';
 import '../../../../../domain/model/common/result.dart';
 import '../../../../../domain/model/display/view_module/view_module.model.dart';
-import '../../../../../domain/usecase/base/display/display.usecase.dart';
+import '../../../../../domain/usecase/display/display.usecase.dart';
 import '../../../../../domain/usecase/display/view_module/get_view_modules.usecase.dart';
 import '../../component/view_module_list/view_module_factory/view_module_factory.dart';
 
@@ -88,7 +88,7 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     required int tabId,
     int page = 1,
   }) async {
-    return await _displayUsecase.excute(
+    return await _displayUsecase.execute(
       usecase: GetViewModulesUsecase(tabId: tabId, page: page),
     );
   }

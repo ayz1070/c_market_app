@@ -38,6 +38,8 @@ abstract class $CartStateCopyWith<$Res> {
       ProductInfo productInfo,
       int quantity,
       int totalPrice});
+
+  $ProductInfoCopyWith<$Res> get productInfo;
 }
 
 /// @nodoc
@@ -55,7 +57,7 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   $Res call({
     Object? status = null,
     Object? error = null,
-    Object? productInfo = freezed,
+    Object? productInfo = null,
     Object? quantity = null,
     Object? totalPrice = null,
   }) {
@@ -68,7 +70,7 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as ErrorResponse,
-      productInfo: freezed == productInfo
+      productInfo: null == productInfo
           ? _value.productInfo
           : productInfo // ignore: cast_nullable_to_non_nullable
               as ProductInfo,
@@ -81,6 +83,14 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductInfoCopyWith<$Res> get productInfo {
+    return $ProductInfoCopyWith<$Res>(_value.productInfo, (value) {
+      return _then(_value.copyWith(productInfo: value) as $Val);
+    });
   }
 }
 
@@ -98,6 +108,9 @@ abstract class _$$CartStateImplCopyWith<$Res>
       ProductInfo productInfo,
       int quantity,
       int totalPrice});
+
+  @override
+  $ProductInfoCopyWith<$Res> get productInfo;
 }
 
 /// @nodoc
@@ -113,7 +126,7 @@ class __$$CartStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? error = null,
-    Object? productInfo = freezed,
+    Object? productInfo = null,
     Object? quantity = null,
     Object? totalPrice = null,
   }) {
@@ -126,7 +139,7 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as ErrorResponse,
-      productInfo: freezed == productInfo
+      productInfo: null == productInfo
           ? _value.productInfo
           : productInfo // ignore: cast_nullable_to_non_nullable
               as ProductInfo,
@@ -188,8 +201,8 @@ class _$CartStateImpl implements _CartState {
             other is _$CartStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.error, error) || other.error == error) &&
-            const DeepCollectionEquality()
-                .equals(other.productInfo, productInfo) &&
+            (identical(other.productInfo, productInfo) ||
+                other.productInfo == productInfo) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.totalPrice, totalPrice) ||
@@ -197,8 +210,8 @@ class _$CartStateImpl implements _CartState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, error,
-      const DeepCollectionEquality().hash(productInfo), quantity, totalPrice);
+  int get hashCode => Object.hash(
+      runtimeType, status, error, productInfo, quantity, totalPrice);
 
   @JsonKey(ignore: true)
   @override

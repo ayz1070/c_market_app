@@ -1,5 +1,5 @@
 import 'package:c_market_app/domain/repository/repository.dart';
 
-abstract class RemoteUsecase<T extends Repository>{
-  Future call(T repository);
-}
+import 'usecase.dart';
+
+abstract class RemoteUsecase<T extends Repository> extends Usecase<T>{}
