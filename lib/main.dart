@@ -1,5 +1,7 @@
 import 'package:c_market_app/presentation/routes/routes.dart';
 import 'package:c_market_app/service_locator.dart';
+import 'dependency_injection.dart';
+import 'presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -16,11 +18,13 @@ import 'presentation/pages/cart/bloc/cart_list_bloc/cart_list_bloc.dart';
 
 void main() async{
   await Hive.initFlutter();
-  
+
   Hive.registerAdapter(ProductInfoEntityAdapter());
   Hive.registerAdapter(CartEntityAdapter());
 
   setLocator();
+
+  //configureDependencies();
   runApp(const MyApp());
 }
 
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
           create: (context) => MallTypeCubit(),
         ),
         BlocProvider(
-            create: (_)  => getIt<CartBloc>()..add(CartInitialized()),
+          create: (_)  => getIt<CartBloc>()..add(CartInitialized()),
         ),
         BlocProvider(
           lazy: false,
