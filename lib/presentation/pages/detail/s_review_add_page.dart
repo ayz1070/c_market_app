@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'w_add_app_bar.dart';
 import 'w_review_box_big.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ReviewAddPage extends StatefulWidget {
   const ReviewAddPage({super.key});
@@ -36,7 +37,7 @@ class _ReviewAddPageState extends State<ReviewAddPage> {
                 ),
               );
             }),
-          ),
+          ).pLTRB(0, 30, 0, 30),
           // 작성 부분
           Padding(
             padding: const EdgeInsets.all(10.0),
