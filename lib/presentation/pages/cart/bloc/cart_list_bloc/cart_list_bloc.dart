@@ -206,14 +206,14 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     try {
       final productId = event.cart.product.productId;
       final qty = event.cart.quantity + 1;
+      if(qty < 1) return;
+
       final response = await _displayUsecase.execute(
         usecase: ChangeCartQtyUsecase(productId: productId, qty: qty),
       );
 
       response.when(
-        success: (data) {
-          final List<Cart> cartList = [...data];
-
+        success: (cartList) {
           final totalPrice = _calTotalPrice(state.selectedProduct, cartList);
           emit(state.copyWith(
             cartList: cartList,

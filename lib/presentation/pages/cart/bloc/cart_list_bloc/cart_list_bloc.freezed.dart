@@ -12,7 +12,7 @@ part of 'cart_list_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CartListState {
@@ -86,11 +86,11 @@ class _$CartListStateCopyWithImpl<$Res, $Val extends CartListState>
 }
 
 /// @nodoc
-abstract class _$$_CartListStateCopyWith<$Res>
+abstract class _$$CartListStateImplCopyWith<$Res>
     implements $CartListStateCopyWith<$Res> {
-  factory _$$_CartListStateCopyWith(
-          _$_CartListState value, $Res Function(_$_CartListState) then) =
-      __$$_CartListStateCopyWithImpl<$Res>;
+  factory _$$CartListStateImplCopyWith(
+          _$CartListStateImpl value, $Res Function(_$CartListStateImpl) then) =
+      __$$CartListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_CartListStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CartListStateCopyWithImpl<$Res>
-    extends _$CartListStateCopyWithImpl<$Res, _$_CartListState>
-    implements _$$_CartListStateCopyWith<$Res> {
-  __$$_CartListStateCopyWithImpl(
-      _$_CartListState _value, $Res Function(_$_CartListState) _then)
+class __$$CartListStateImplCopyWithImpl<$Res>
+    extends _$CartListStateCopyWithImpl<$Res, _$CartListStateImpl>
+    implements _$$CartListStateImplCopyWith<$Res> {
+  __$$CartListStateImplCopyWithImpl(
+      _$CartListStateImpl _value, $Res Function(_$CartListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_CartListStateCopyWithImpl<$Res>
     Object? selectedProduct = null,
     Object? totalPrice = null,
   }) {
-    return _then(_$_CartListState(
+    return _then(_$CartListStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_CartListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartListState implements _CartListState {
-  _$_CartListState(
+class _$CartListStateImpl implements _CartListState {
+  _$CartListStateImpl(
       {this.status = Status.initial,
       this.error = const ErrorResponse(),
       final List<Cart> cartList = const <Cart>[],
@@ -189,10 +189,10 @@ class _$_CartListState implements _CartListState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartListState &&
+            other is _$CartListStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality().equals(other._cartList, _cartList) &&
@@ -214,8 +214,8 @@ class _$_CartListState implements _CartListState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartListStateCopyWith<_$_CartListState> get copyWith =>
-      __$$_CartListStateCopyWithImpl<_$_CartListState>(this, _$identity);
+  _$$CartListStateImplCopyWith<_$CartListStateImpl> get copyWith =>
+      __$$CartListStateImplCopyWithImpl<_$CartListStateImpl>(this, _$identity);
 }
 
 abstract class _CartListState implements CartListState {
@@ -224,7 +224,7 @@ abstract class _CartListState implements CartListState {
       final ErrorResponse error,
       final List<Cart> cartList,
       final List<String> selectedProduct,
-      final int totalPrice}) = _$_CartListState;
+      final int totalPrice}) = _$CartListStateImpl;
 
   @override
   Status get status;
@@ -238,6 +238,6 @@ abstract class _CartListState implements CartListState {
   int get totalPrice;
   @override
   @JsonKey(ignore: true)
-  _$$_CartListStateCopyWith<_$_CartListState> get copyWith =>
+  _$$CartListStateImplCopyWith<_$CartListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
