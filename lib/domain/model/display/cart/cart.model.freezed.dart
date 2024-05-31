@@ -12,7 +12,7 @@ part of 'cart.model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Cart _$CartFromJson(Map<String, dynamic> json) {
   return _Cart.fromJson(json);
@@ -76,9 +76,10 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
 }
 
 /// @nodoc
-abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
-  factory _$$_CartCopyWith(_$_Cart value, $Res Function(_$_Cart) then) =
-      __$$_CartCopyWithImpl<$Res>;
+abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
+  factory _$$CartImplCopyWith(
+          _$CartImpl value, $Res Function(_$CartImpl) then) =
+      __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int quantity, ProductInfo product});
@@ -88,9 +89,10 @@ abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
-    implements _$$_CartCopyWith<$Res> {
-  __$$_CartCopyWithImpl(_$_Cart _value, $Res Function(_$_Cart) _then)
+class __$$CartImplCopyWithImpl<$Res>
+    extends _$CartCopyWithImpl<$Res, _$CartImpl>
+    implements _$$CartImplCopyWith<$Res> {
+  __$$CartImplCopyWithImpl(_$CartImpl _value, $Res Function(_$CartImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +101,7 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
     Object? quantity = null,
     Object? product = null,
   }) {
-    return _then(_$_Cart(
+    return _then(_$CartImpl(
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -114,10 +116,11 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Cart with DiagnosticableTreeMixin implements _Cart {
-  const _$_Cart({required this.quantity, required this.product});
+class _$CartImpl with DiagnosticableTreeMixin implements _Cart {
+  const _$CartImpl({required this.quantity, required this.product});
 
-  factory _$_Cart.fromJson(Map<String, dynamic> json) => _$$_CartFromJson(json);
+  factory _$CartImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CartImplFromJson(json);
 
   @override
   final int quantity;
@@ -139,10 +142,10 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cart &&
+            other is _$CartImpl &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.product, product) || other.product == product));
@@ -155,12 +158,12 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartCopyWith<_$_Cart> get copyWith =>
-      __$$_CartCopyWithImpl<_$_Cart>(this, _$identity);
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      __$$CartImplCopyWithImpl<_$CartImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CartToJson(
+    return _$$CartImplToJson(
       this,
     );
   }
@@ -169,9 +172,9 @@ class _$_Cart with DiagnosticableTreeMixin implements _Cart {
 abstract class _Cart implements Cart {
   const factory _Cart(
       {required final int quantity,
-      required final ProductInfo product}) = _$_Cart;
+      required final ProductInfo product}) = _$CartImpl;
 
-  factory _Cart.fromJson(Map<String, dynamic> json) = _$_Cart.fromJson;
+  factory _Cart.fromJson(Map<String, dynamic> json) = _$CartImpl.fromJson;
 
   @override
   int get quantity;
@@ -179,5 +182,6 @@ abstract class _Cart implements Cart {
   ProductInfo get product;
   @override
   @JsonKey(ignore: true)
-  _$$_CartCopyWith<_$_Cart> get copyWith => throw _privateConstructorUsedError;
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

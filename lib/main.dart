@@ -1,5 +1,4 @@
 import 'package:c_market_app/presentation/routes/routes.dart';
-import 'package:c_market_app/service_locator.dart';
 import 'dependency_injection.dart';
 import 'presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +21,9 @@ void main() async{
   Hive.registerAdapter(ProductInfoEntityAdapter());
   Hive.registerAdapter(CartEntityAdapter());
 
-  setLocator();
+  //setLocator();
 
-  //configureDependencies();
+  configureDependencies();
   runApp(const MyApp());
 }
 
