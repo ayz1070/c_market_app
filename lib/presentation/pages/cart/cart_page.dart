@@ -10,6 +10,7 @@ import '../../../dependency_injection.dart';
 import '../../../domain/model/display/cart/cart.model.dart';
 import '../../main/bloc/payment_bloc/payment_bloc.dart';
 import '../../main/component/payment/payment_button.dart';
+import 'bloc/cart_list_bloc/cart_list_bloc.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -59,7 +60,7 @@ class CartPage extends StatelessWidget {
                   selectedCartList: selectedCartList,
                   totalPrice: state.totalPrice
                   )
-                  : SizedBox.shrink()
+                  : SizedBox.shrink();
             },
           ),
         ),
