@@ -5,11 +5,13 @@ import 'package:c_market_app/data/mapper/common.mapper.dart';
 import 'package:c_market_app/data/mapper/display.mapper.dart';
 import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
 import 'package:c_market_app/domain/repository/display.repository.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../domain/model/display/cart/cart.model.dart';
 import '../../domain/model/display/view_module/view_module.model.dart';
 import '../data_source/local_storage/display.dao.dart';
 
+@Singleton(as: DisplayRepository)
 class DisplayRepositoryImpl implements DisplayRepository{
   final DisplayApi _displayApi;
   final DisplayDao _displayDao;
