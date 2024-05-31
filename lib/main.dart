@@ -7,7 +7,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/theme/theme_data.dart';
 import 'data/entity/display/cart/cart.entity.dart';
 import 'data/entity/display/product_info/product_info.entity.dart';
+import 'dependency_injection.dart';
+import 'presentation/main/bloc/cart_bloc/cart_bloc.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
+import 'presentation/pages/cart/bloc/cart_list_bloc/cart_list_bloc.dart';
 
 void main() async{
   await Hive.initFlutter();
@@ -30,7 +33,13 @@ class MyApp extends StatelessWidget {
         BlocProvider<MallTypeCubit>(
           create: (context) => MallTypeCubit(),
         ),
-        // Add other providers if needed
+        BlocProvider(
+            create: (_)  => getIt<CartBloc>()..add(CartInitialized()),
+        ),
+        BlocProvider(
+          lazy: false,
+          create: (_)  => getIt<CartListBloc>()..add(CartListInitialized()),
+        ),// Add other providers if needed
       ],
       child: MaterialApp.router(
         routerConfig: router,
