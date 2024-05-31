@@ -7,11 +7,13 @@ import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
 import 'package:c_market_app/domain/repository/display.repository.dart';
 
 import '../../domain/model/display/cart/cart.model.dart';
+import '../data_source/local_storage/display.dao.dart';
 
 class DisplayRepositoryImpl implements DisplayRepository{
   final DisplayApi _displayApi;
+  final DisplayDao _displayDao;
 
-  DisplayRepositoryImpl(this._displayApi);
+  DisplayRepositoryImpl(this._displayApi, this._displayDao);
 
   @override
   Future<ResponseWrapper<List<Menu>>> getMenuByMallType(
@@ -24,33 +26,51 @@ class DisplayRepositoryImpl implements DisplayRepository{
   }
 
   @override
-  Future<ResponseWrapper<List<Cart>>> addCartList({required Cart cart}) {
-    // TODO: implement addCartList
-    throw UnimplementedError();
+  Future<ResponseWrapper<List<Cart>>> getCartList() async {
+    final response = await _displayDao.getCartList();
+
+    return response.toModel<List<Cart>>(
+      response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ResponseWrapper<List<Cart>>> changeCartQuantityByPrdId({required String productId, required int qty}) {
-    // TODO: implement changeCartQuantityByPrdId
-    throw UnimplementedError();
+  Future<ResponseWrapper<List<Cart>>> addCartList({required Cart cart}) async {
+    final response = await _displayDao.insertCart(cart.toEntity());
+
+    return response.toModel<List<Cart>>(
+      response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ResponseWrapper<List<Cart>>> clearCartList() {
-    // TODO: implement clearCartList
-    throw UnimplementedError();
+  Future<ResponseWrapper<List<Cart>>> clearCartList() async {
+    final response = await _displayDao.clearCarts();
+
+    return response.toModel<List<Cart>>([]);
   }
 
   @override
-  Future<ResponseWrapper<List<Cart>>> deleteCartByPrdId(List<String> productIds) {
-    // TODO: implement deleteCartByPrdId
-    throw UnimplementedError();
+  Future<ResponseWrapper<List<Cart>>> deleteCartByPrdId(
+      List<String> productIds,
+      ) async {
+    final response = await _displayDao.deleteCart(productIds);
+
+    return response.toModel<List<Cart>>(
+      response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ResponseWrapper<List<Cart>>> getCartList() {
-    // TODO: implement getCartList
-    throw UnimplementedError();
+  Future<ResponseWrapper<List<Cart>>> changeCartQuantityByPrdId({
+    required String productId,
+    required int qty,
+  }) async {
+    final response = await _displayDao.changeQtyCart(productId, qty);
+
+    return response.toModel<List<Cart>>(
+      response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+    );
   }
 
 }
