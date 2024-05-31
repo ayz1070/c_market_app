@@ -9,6 +9,8 @@ import 'data/entity/display/cart/cart.entity.dart';
 import 'data/entity/display/product_info/product_info.entity.dart';
 import 'dependency_injection.dart';
 import 'presentation/main/bloc/cart_bloc/cart_bloc.dart';
+import 'presentation/main/bloc/payment_bloc/payment_bloc.dart';
+import 'presentation/main/component/payment/payment_button.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
 import 'presentation/pages/cart/bloc/cart_list_bloc/cart_list_bloc.dart';
 
@@ -39,6 +41,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           lazy: false,
           create: (_)  => getIt<CartListBloc>()..add(CartListInitialized()),
+        ),
+        BlocProvider<PaymentBloc>( // PaymentBloc 추가
+          lazy: false,
+          create: (_) => getIt<PaymentBloc>(), // PaymentBloc 설정
         ),// Add other providers if needed
       ],
       child: MaterialApp.router(
