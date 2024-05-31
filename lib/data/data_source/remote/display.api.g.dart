@@ -10,9 +10,9 @@ part of 'display.api.dart';
 
 class _DisplayApi implements DisplayApi {
   _DisplayApi(
-    this._dio, {
-    this.baseUrl,
-  });
+      this._dio, {
+        this.baseUrl,
+      });
 
   final Dio _dio;
 
@@ -27,27 +27,27 @@ class _DisplayApi implements DisplayApi {
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ResponseWrapper<List<MenuDto>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/api/menus/${mallType}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/api/menus/${mallType}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ResponseWrapper<List<MenuDto>>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
+          (json) => json is List<dynamic>
           ? json
-              .map<MenuDto>((i) => MenuDto.fromJson(i as Map<String, dynamic>))
-              .toList()
+          .map<MenuDto>((i) => MenuDto.fromJson(i as Map<String, dynamic>))
+          .toList()
           : List.empty(),
     );
     return value;
@@ -55,37 +55,38 @@ class _DisplayApi implements DisplayApi {
 
   @override
   Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(
-    int tabId,
-    int page,
-  ) async {
+      int tabId,
+      int page,
+      ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ResponseWrapper<List<ViewModuleDto>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/api/view-modules/${tabId}/${page}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/api/view-modules/${tabId}/${page}',
+          //'/api/view-modules/${tabId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
     final value = ResponseWrapper<List<ViewModuleDto>>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
+          (json) => json is List<dynamic>
           ? json
-              .map<ViewModuleDto>(
-                  (i) => ViewModuleDto.fromJson(i as Map<String, dynamic>))
-              .toList()
+          .map<ViewModuleDto>(
+              (i) => ViewModuleDto.fromJson(i as Map<String, dynamic>))
+          .toList()
           : List.empty(),
     );
     return value;
@@ -105,9 +106,9 @@ class _DisplayApi implements DisplayApi {
   }
 
   String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+      String dioBaseUrl,
+      String? baseUrl,
+      ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

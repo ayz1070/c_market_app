@@ -4,6 +4,7 @@ import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
 import 'package:c_market_app/domain/repository/repository.dart';
 
 import '../model/display/cart/cart.model.dart';
+import '../model/display/display.model.dart';
 
 abstract class DisplayRepository extends Repository{
   Future<ResponseWrapper<List<Menu>>> getMenuByMallType({
@@ -33,5 +34,10 @@ abstract class DisplayRepository extends Repository{
   Future<ResponseWrapper<List<Cart>>> changeCartQuantityByPrdId({
     required String productId,
     required int qty,
+  });
+
+  Future<ResponseWrapper<List<ViewModule>>> getViewModuleByTabId({
+    required int tabId,
+    required int page,
   });
 }

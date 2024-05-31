@@ -7,6 +7,7 @@ import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
 import 'package:c_market_app/domain/repository/display.repository.dart';
 
 import '../../domain/model/display/cart/cart.model.dart';
+import '../../domain/model/display/view_module/view_module.model.dart';
 import '../data_source/local_storage/display.dao.dart';
 
 class DisplayRepositoryImpl implements DisplayRepository{
@@ -70,6 +71,19 @@ class DisplayRepositoryImpl implements DisplayRepository{
 
     return response.toModel<List<Cart>>(
       response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+    );
+  }
+
+  @override
+  Future<ResponseWrapper<List<ViewModule>>> getViewModuleByTabId({
+    required int tabId,
+    required int page,
+  }) async {
+    final response = await _displayApi.getViewModulesByTabId(tabId, page);
+
+    return response.toModel<List<ViewModule>>(
+      response.data?.map((viewModuleDto) => viewModuleDto.toModel()).toList() ??
+          [],
     );
   }
 
