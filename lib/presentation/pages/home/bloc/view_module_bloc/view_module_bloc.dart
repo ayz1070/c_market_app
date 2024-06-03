@@ -61,11 +61,63 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
       response.when(
         success: (data) {
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
-          final List<Widget> viewModules =
-          data.map((e) => viewModuleFactory.textToWidget(e)).toList();
+          final List<Widget> viewModules = (data as List<ViewModule>)
+              .map((e) => viewModuleFactory.textToWidget(e))
+              .toList();
           emit(state.copyWith(
             status: Status.success,
             tabId: tabId,
+            viewModules: viewModules,
+          ));
+        },
+        failure: (error) {
+          emit(state.copyWith(status: Status.error, error: error));
+        },
+      );
+    } catch (error) {
+      CustomLogger.logger.e(error);
+      emit(
+        state.copyWith(
+          status: Status.error,
+          error: CommonException.setError(error),
+        ),
+      );
+    }
+  }
+
+
+  Future<void> _onViewModuleFetched(ViewModuleFetched event,
+      Emitter<ViewModuleState> emit) async {
+    // 끝 페이지에 도달했다면 리턴
+    if (state.isEndOfPage) return;
+    final nextPage = state.currentPage + 1;
+    final tabId = state.tabId;
+
+    emit(state.copyWith(status: Status.loading));
+    try {
+      final response = await _fetch(tabId: tabId, page: nextPage);
+      response.when(
+        success: (data) {
+          if (data.isEmpty) {
+            emit(
+              state.copyWith(
+                status: Status.success,
+                currentPage: nextPage,
+                isEndOfPage: true,
+              ),
+            );
+            return;
+          }
+          final List<Widget> viewModules = [...state.viewModules];
+          ViewModuleFactory viewModuleFactory = ViewModuleFactory();
+          viewModules.addAll(List.generate(
+            data.length,
+                (index) => viewModuleFactory.textToWidget(data[index]),
+          ));
+
+          emit(state.copyWith(
+            status: Status.success,
+            currentPage: nextPage,
             viewModules: viewModules,
           ));
         },
@@ -91,54 +143,5 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     return await _displayUsecase.execute(
       usecase: GetViewModulesUsecase(tabId: tabId, page: page),
     );
-  }
-
-  Future<void> _onViewModuleFetched(ViewModuleFetched event,
-      Emitter<ViewModuleState> emit) async {
-    // 끝 페이지에 도달했다면 리턴
-    if (state.isEndOfPage) return;
-    final nextPage = state.currentPage + 1;
-    final tabId = state.tabId;
-
-    emit(state.copyWith(status: Status.loading));
-    final response = await _fetch(tabId: tabId, page: nextPage);
-    try {
-      response.when(
-        success: (data) {
-          if (data.isEmpty) {
-            emit(
-              state.copyWith(
-                status: Status.success,
-                currentPage: nextPage,
-                isEndOfPage: true,
-              ),
-            );
-          }
-          final List<Widget> viewModules = [...state.viewModules];
-          ViewModuleFactory viewModuleFactory = ViewModuleFactory();
-          viewModules.addAll(List.generate(
-            data.length,
-                (index) => viewModuleFactory.textToWidget(data[index]),
-          ));
-
-          emit(state.copyWith(
-            status: Status.success,
-            tabId: tabId,
-            viewModules: viewModules,
-          ));
-        },
-        failure: (error) {
-          emit(state.copyWith(status: Status.error, error: error));
-        },
-      );
-    } catch (error) {
-      CustomLogger.logger.e(error);
-      emit(
-        state.copyWith(
-          status: Status.error,
-          error: CommonException.setError(error),
-        ),
-      );
-    }
   }
 }
