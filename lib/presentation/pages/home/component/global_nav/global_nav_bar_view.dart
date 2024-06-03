@@ -16,27 +16,18 @@ class GlobalNavBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MenuBloc, MenuState>(
-      builder: (context, state) {
-        return Expanded(
-          child: TabBarView(
-            children: List.generate(
-              state.menus.length,
-              (index) {
-                final tabId = menus[index].tabId;
-
-                return BlocProvider(
-                  create: (_) => getIt<ViewModuleBloc>()
-                    ..add(
-                      ViewModuleInitialized(tabId: tabId),
-                    ),
-                  child: ViewModuleList(tabId: tabId),
-                );
-              },
-            ),
-          ),
-        );
-      },
+    return Expanded(
+      child: TabBarView(
+        children: List.generate(
+            menus.length,
+                (index) => Column(
+              children: [
+                Text("mallType : ${mallType}"),
+                Text("menu: ${menus[index].title}"),
+              ],
+            )
+        ),
+      ),
     );
   }
 }
