@@ -46,8 +46,9 @@ class DisplayMockApi implements DisplayApi {
       );
     }
 
-    final endOfTabId = tabId % 10;
+
     late String source;
+    final endOfTabId = tabId % 10;
     switch (endOfTabId) {
       case 1:
         source = DisplayMockData.viewModulesByTabIdCaseOne;
@@ -55,16 +56,20 @@ class DisplayMockApi implements DisplayApi {
         source = DisplayMockData.viewModulesByTabIdCaseTwo;
       case 3:
         source = DisplayMockData.viewModulesByTabIdCaseThree;
+      case 4:
+        source = DisplayMockData.viewModulesByTabIdCaseFour;
+      case 5:
+        source = DisplayMockData.viewModulesByTabIdCaseFive;
     }
 
-    return Future(
-          () =>
-          ResponseWrapper(
-              status: 'SUCCESS',
-              code: '0000',
-              message: '',
-              data: viewModuleParser(source),
-          ),
+    return Future.delayed(
+      Duration(seconds: 2),
+          () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: '',
+        data: viewModuleParser(source),
+      ),
     );
   }
 
@@ -72,6 +77,7 @@ class DisplayMockApi implements DisplayApi {
     List<MenuDto> menus = [];
     final List json = jsonDecode(source);
     menus = json.map((e) => MenuDto.fromJson(e)).toList();
+
     return menus;
   }
 
