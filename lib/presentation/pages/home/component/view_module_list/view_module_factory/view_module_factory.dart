@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/extensions.dart';
 import '../../../../../../domain/model/display/view_module/view_module.model.dart';
+import '../category_product.view_model.dart';
 import '../view_module_A.dart';
 import '../view_module_B.dart';
 import '../view_module_C.dart';
@@ -15,7 +16,8 @@ enum Modules {
   viewModuleB,
   viewModuleC,
   viewModuleD,
-  viewModuleE
+  viewModuleE,
+  categoryProductViewModule,
 }
 
 class ViewModuleFactory {
@@ -24,7 +26,7 @@ class ViewModuleFactory {
     for (final module in Modules.values) {
       final String name = module.name.toSnakeCase();
       if (name.contains(type)) {
-        return module.toWidget() as Widget;
+        return module.toWidget(viewModule) as Widget;
       }
     }
 
@@ -33,7 +35,7 @@ class ViewModuleFactory {
 }
 
 extension ModulesX on Modules {
-  ViewModuleWidget toWidget() {
+  ViewModuleWidget toWidget(ViewModule info) {
     switch (this) {
       case Modules.viewModuleA:
         return const ViewModuleA();
@@ -45,7 +47,8 @@ extension ModulesX on Modules {
         return const ViewModuleD();
       case Modules.viewModuleE:
         return const ViewModuleE();
-
+      case Modules.categoryProductViewModule:
+        return CategoryProductViewModule(info: info);
     }
   }
 }

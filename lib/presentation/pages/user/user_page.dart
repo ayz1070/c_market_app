@@ -36,7 +36,8 @@ class UserPage extends StatelessWidget {
                 //TODO 로그인 이벤트 호출
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => UserProfile()));
+                    MaterialPageRoute(builder: (context) => UserProfile()),
+                  );
                 },
                 style: const ButtonStyle(
                   padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(

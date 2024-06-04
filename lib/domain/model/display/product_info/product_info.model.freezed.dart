@@ -12,7 +12,7 @@ part of 'product_info.model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ProductInfo _$ProductInfoFromJson(Map<String, dynamic> json) {
   return _ProductInfo.fromJson(json);
@@ -26,7 +26,7 @@ mixin _$ProductInfo {
   String get imageUrl => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get originalPrice => throw _privateConstructorUsedError;
-  int get discrountRate => throw _privateConstructorUsedError;
+  int get discountRate => throw _privateConstructorUsedError;
   int get reviewCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $ProductInfoCopyWith<$Res> {
       String imageUrl,
       int price,
       int originalPrice,
-      int discrountRate,
+      int discountRate,
       int reviewCount});
 }
 
@@ -71,7 +71,7 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
     Object? imageUrl = null,
     Object? price = null,
     Object? originalPrice = null,
-    Object? discrountRate = null,
+    Object? discountRate = null,
     Object? reviewCount = null,
   }) {
     return _then(_value.copyWith(
@@ -99,9 +99,9 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
           ? _value.originalPrice
           : originalPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      discrountRate: null == discrountRate
-          ? _value.discrountRate
-          : discrountRate // ignore: cast_nullable_to_non_nullable
+      discountRate: null == discountRate
+          ? _value.discountRate
+          : discountRate // ignore: cast_nullable_to_non_nullable
               as int,
       reviewCount: null == reviewCount
           ? _value.reviewCount
@@ -112,11 +112,11 @@ class _$ProductInfoCopyWithImpl<$Res, $Val extends ProductInfo>
 }
 
 /// @nodoc
-abstract class _$$_ProductInfoCopyWith<$Res>
+abstract class _$$ProductInfoImplCopyWith<$Res>
     implements $ProductInfoCopyWith<$Res> {
-  factory _$$_ProductInfoCopyWith(
-          _$_ProductInfo value, $Res Function(_$_ProductInfo) then) =
-      __$$_ProductInfoCopyWithImpl<$Res>;
+  factory _$$ProductInfoImplCopyWith(
+          _$ProductInfoImpl value, $Res Function(_$ProductInfoImpl) then) =
+      __$$ProductInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -126,16 +126,16 @@ abstract class _$$_ProductInfoCopyWith<$Res>
       String imageUrl,
       int price,
       int originalPrice,
-      int discrountRate,
+      int discountRate,
       int reviewCount});
 }
 
 /// @nodoc
-class __$$_ProductInfoCopyWithImpl<$Res>
-    extends _$ProductInfoCopyWithImpl<$Res, _$_ProductInfo>
-    implements _$$_ProductInfoCopyWith<$Res> {
-  __$$_ProductInfoCopyWithImpl(
-      _$_ProductInfo _value, $Res Function(_$_ProductInfo) _then)
+class __$$ProductInfoImplCopyWithImpl<$Res>
+    extends _$ProductInfoCopyWithImpl<$Res, _$ProductInfoImpl>
+    implements _$$ProductInfoImplCopyWith<$Res> {
+  __$$ProductInfoImplCopyWithImpl(
+      _$ProductInfoImpl _value, $Res Function(_$ProductInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,10 +147,10 @@ class __$$_ProductInfoCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? price = null,
     Object? originalPrice = null,
-    Object? discrountRate = null,
+    Object? discountRate = null,
     Object? reviewCount = null,
   }) {
-    return _then(_$_ProductInfo(
+    return _then(_$ProductInfoImpl(
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -175,9 +175,9 @@ class __$$_ProductInfoCopyWithImpl<$Res>
           ? _value.originalPrice
           : originalPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      discrountRate: null == discrountRate
-          ? _value.discrountRate
-          : discrountRate // ignore: cast_nullable_to_non_nullable
+      discountRate: null == discountRate
+          ? _value.discountRate
+          : discountRate // ignore: cast_nullable_to_non_nullable
               as int,
       reviewCount: null == reviewCount
           ? _value.reviewCount
@@ -189,19 +189,19 @@ class __$$_ProductInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductInfo implements _ProductInfo {
-  const _$_ProductInfo(
+class _$ProductInfoImpl implements _ProductInfo {
+  const _$ProductInfoImpl(
       {required this.productId,
       required this.title,
       required this.subtitle,
       required this.imageUrl,
       required this.price,
       required this.originalPrice,
-      required this.discrountRate,
+      required this.discountRate,
       required this.reviewCount});
 
-  factory _$_ProductInfo.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductInfoFromJson(json);
+  factory _$ProductInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductInfoImplFromJson(json);
 
   @override
   final String productId;
@@ -216,20 +216,20 @@ class _$_ProductInfo implements _ProductInfo {
   @override
   final int originalPrice;
   @override
-  final int discrountRate;
+  final int discountRate;
   @override
   final int reviewCount;
 
   @override
   String toString() {
-    return 'ProductInfo(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discrountRate: $discrountRate, reviewCount: $reviewCount)';
+    return 'ProductInfo(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discountRate: $discountRate, reviewCount: $reviewCount)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductInfo &&
+            other is _$ProductInfoImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.title, title) || other.title == title) &&
@@ -240,8 +240,8 @@ class _$_ProductInfo implements _ProductInfo {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.originalPrice, originalPrice) ||
                 other.originalPrice == originalPrice) &&
-            (identical(other.discrountRate, discrountRate) ||
-                other.discrountRate == discrountRate) &&
+            (identical(other.discountRate, discountRate) ||
+                other.discountRate == discountRate) &&
             (identical(other.reviewCount, reviewCount) ||
                 other.reviewCount == reviewCount));
   }
@@ -249,17 +249,17 @@ class _$_ProductInfo implements _ProductInfo {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, productId, title, subtitle,
-      imageUrl, price, originalPrice, discrountRate, reviewCount);
+      imageUrl, price, originalPrice, discountRate, reviewCount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductInfoCopyWith<_$_ProductInfo> get copyWith =>
-      __$$_ProductInfoCopyWithImpl<_$_ProductInfo>(this, _$identity);
+  _$$ProductInfoImplCopyWith<_$ProductInfoImpl> get copyWith =>
+      __$$ProductInfoImplCopyWithImpl<_$ProductInfoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductInfoToJson(
+    return _$$ProductInfoImplToJson(
       this,
     );
   }
@@ -273,11 +273,11 @@ abstract class _ProductInfo implements ProductInfo {
       required final String imageUrl,
       required final int price,
       required final int originalPrice,
-      required final int discrountRate,
-      required final int reviewCount}) = _$_ProductInfo;
+      required final int discountRate,
+      required final int reviewCount}) = _$ProductInfoImpl;
 
   factory _ProductInfo.fromJson(Map<String, dynamic> json) =
-      _$_ProductInfo.fromJson;
+      _$ProductInfoImpl.fromJson;
 
   @override
   String get productId;
@@ -292,11 +292,11 @@ abstract class _ProductInfo implements ProductInfo {
   @override
   int get originalPrice;
   @override
-  int get discrountRate;
+  int get discountRate;
   @override
   int get reviewCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductInfoCopyWith<_$_ProductInfo> get copyWith =>
+  _$$ProductInfoImplCopyWith<_$ProductInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,6 +24,8 @@ mixin _$ViewModule {
   String get title => throw _privateConstructorUsedError;
   String get subtitle => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  List<ProductInfo> get products => throw _privateConstructorUsedError;
+  List<String> get tabs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +39,13 @@ abstract class $ViewModuleCopyWith<$Res> {
           ViewModule value, $Res Function(ViewModule) then) =
       _$ViewModuleCopyWithImpl<$Res, ViewModule>;
   @useResult
-  $Res call({String type, String title, String subtitle, String imageUrl});
+  $Res call(
+      {String type,
+      String title,
+      String subtitle,
+      String imageUrl,
+      List<ProductInfo> products,
+      List<String> tabs});
 }
 
 /// @nodoc
@@ -57,6 +65,8 @@ class _$ViewModuleCopyWithImpl<$Res, $Val extends ViewModule>
     Object? title = null,
     Object? subtitle = null,
     Object? imageUrl = null,
+    Object? products = null,
+    Object? tabs = null,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -75,6 +85,14 @@ class _$ViewModuleCopyWithImpl<$Res, $Val extends ViewModule>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      products: null == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfo>,
+      tabs: null == tabs
+          ? _value.tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -87,7 +105,13 @@ abstract class _$$ViewModuleImplCopyWith<$Res>
       __$$ViewModuleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type, String title, String subtitle, String imageUrl});
+  $Res call(
+      {String type,
+      String title,
+      String subtitle,
+      String imageUrl,
+      List<ProductInfo> products,
+      List<String> tabs});
 }
 
 /// @nodoc
@@ -105,6 +129,8 @@ class __$$ViewModuleImplCopyWithImpl<$Res>
     Object? title = null,
     Object? subtitle = null,
     Object? imageUrl = null,
+    Object? products = null,
+    Object? tabs = null,
   }) {
     return _then(_$ViewModuleImpl(
       type: null == type
@@ -123,6 +149,14 @@ class __$$ViewModuleImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfo>,
+      tabs: null == tabs
+          ? _value._tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -134,7 +168,11 @@ class _$ViewModuleImpl implements _ViewModule {
       {required this.type,
       required this.title,
       required this.subtitle,
-      required this.imageUrl});
+      required this.imageUrl,
+      required final List<ProductInfo> products,
+      required final List<String> tabs})
+      : _products = products,
+        _tabs = tabs;
 
   factory _$ViewModuleImpl.fromJson(Map<String, dynamic> json) =>
       _$$ViewModuleImplFromJson(json);
@@ -147,10 +185,25 @@ class _$ViewModuleImpl implements _ViewModule {
   final String subtitle;
   @override
   final String imageUrl;
+  final List<ProductInfo> _products;
+  @override
+  List<ProductInfo> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  final List<String> _tabs;
+  @override
+  List<String> get tabs {
+    if (_tabs is EqualUnmodifiableListView) return _tabs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tabs);
+  }
 
   @override
   String toString() {
-    return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl)';
+    return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, products: $products, tabs: $tabs)';
   }
 
   @override
@@ -163,12 +216,21 @@ class _$ViewModuleImpl implements _ViewModule {
             (identical(other.subtitle, subtitle) ||
                 other.subtitle == subtitle) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality().equals(other._tabs, _tabs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, title, subtitle, imageUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      title,
+      subtitle,
+      imageUrl,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_tabs));
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +251,9 @@ abstract class _ViewModule implements ViewModule {
       {required final String type,
       required final String title,
       required final String subtitle,
-      required final String imageUrl}) = _$ViewModuleImpl;
+      required final String imageUrl,
+      required final List<ProductInfo> products,
+      required final List<String> tabs}) = _$ViewModuleImpl;
 
   factory _ViewModule.fromJson(Map<String, dynamic> json) =
       _$ViewModuleImpl.fromJson;
@@ -202,6 +266,10 @@ abstract class _ViewModule implements ViewModule {
   String get subtitle;
   @override
   String get imageUrl;
+  @override
+  List<ProductInfo> get products;
+  @override
+  List<String> get tabs;
   @override
   @JsonKey(ignore: true)
   _$$ViewModuleImplCopyWith<_$ViewModuleImpl> get copyWith =>

@@ -2,7 +2,6 @@ import 'package:hive/hive.dart';
 
 import '../../dto/common/response_wrapper/response_wrapper.dart';
 import '../../entity/display/cart/cart.entity.dart';
-import '../../mapper/display.mapper.dart';
 
 const String _cartDb = 'CART_DB';
 

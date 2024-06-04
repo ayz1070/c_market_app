@@ -13,7 +13,7 @@ class ProductInfo with _$ProductInfo {
     required String imageUrl,
     required int price,
     required int originalPrice,
-    required int discrountRate,
+    required int discountRate,
     required int reviewCount,
   }) = _ProductInfo;
 

@@ -15,9 +15,13 @@ class SearchPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SearchBar(
                 leading: Icon(Icons.search_outlined),
-                padding: MaterialStatePropertyAll(EdgeInsets.fromLTRB(10, 0, 10, 0)),
-                elevation:MaterialStateProperty.all<double?>(0.0),
-                backgroundColor: MaterialStateProperty.all(AppColors.primary.withOpacity(0.5)),
+                elevation: MaterialStateProperty.all<double?>(0.0),
+                backgroundColor: MaterialStateProperty.all(
+                  AppColors.primary.withOpacity(0.5),
+                ),
+                padding: MaterialStatePropertyAll(
+                  const EdgeInsets.symmetric(horizontal: 10),
+                ),
                 autoFocus: true,
               ),
             ),

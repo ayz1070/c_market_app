@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
 import '../../../dependency_injection.dart';
-import '../../../domain/usecase/display/display.usecase.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
@@ -47,7 +46,7 @@ class HomePageView extends StatelessWidget {
                 child: Column(
                   children: [
                     GlobalNavBar(state.menus),
-                    GlobalNavBarView(state.mallType, state.menus)
+                    GlobalNavBarView(state.mallType, state.menus),
                   ],
                 ),
               );
@@ -57,7 +56,7 @@ class HomePageView extends StatelessWidget {
                 child: Column(
                   children: [
                     GlobalNavBar(state.menus),
-                    GlobalNavBarView(state.mallType, state.menus)
+                    GlobalNavBarView(state.mallType, state.menus),
                   ],
                 ),
                 animationDuration: const Duration(milliseconds: 300),

@@ -1,4 +1,4 @@
-import 'package:c_market_app/core/theme/constant/app_colors.dart';
+import '../../core/theme/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class LongButton extends StatelessWidget {
@@ -11,15 +11,8 @@ class LongButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onTap,
-      child: Text(
-        '$text',
-        style: TextStyle(color: Colors.white),
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
-      ),
+      style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+      child: Text('$text', style: TextStyle(color: Colors.white)),
     );
   }
 }
-
-

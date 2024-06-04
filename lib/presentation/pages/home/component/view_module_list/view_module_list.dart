@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/extensions.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
+import '../footer/footer.dart';
 
 class ViewModuleList extends StatefulWidget {
   const ViewModuleList({required this.tabId, super.key});
@@ -51,9 +52,10 @@ class _ViewModuleListState extends State<ViewModuleList> {
         return (state.status.isInitial || state.viewModules.isEmpty)
             ? LoadingWidget()
             : ListView(controller: scrollController, children: [
-                ...state.viewModules,
-                if (state.status.isLoading) const LoadingWidget(isBottom: true),
-              ]);
+          ...state.viewModules,
+          if (state.status.isLoading) const LoadingWidget(isBottom: true),
+          Footer(),
+        ]);
       }),
       onRefresh: () async => context
           .read<ViewModuleBloc>()

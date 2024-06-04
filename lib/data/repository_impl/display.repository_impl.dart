@@ -38,14 +38,14 @@ class DisplayRepositoryImpl implements DisplayRepository {
     );
   }
 
-  @override
-  Future<ResponseWrapper<List<Cart>>> addCartList({required Cart cart}) async {
-    final response = await _displayDao.insertCart(cart.toEntity());
-
-    return response.toModel<List<Cart>>(
-      response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
-    );
-  }
+  // @override
+  // Future<ResponseWrapper<List<Cart>>> addCartList({required Cart cart}) async {
+  //   // final response = await _displayDao.insertCart(cart.toEntity());
+  //
+  //   return response.toModel<List<Cart>>(
+  //     response.data?.map((cartEntity) => cartEntity.toModel()).toList() ?? [],
+  //   );
+  // }
 
   @override
   Future<ResponseWrapper<List<Cart>>> clearCartList() async {
