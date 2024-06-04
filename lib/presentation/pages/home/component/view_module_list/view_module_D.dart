@@ -1,17 +1,15 @@
 import 'view_module_factory/view_module_widget.dart';
 import 'package:flutter/material.dart';
 
-class ViewModuleC extends StatelessWidget with ViewModuleWidget {
-  const ViewModuleC({super.key});
+class ViewModuleD extends StatelessWidget with ViewModuleWidget {
+  const ViewModuleD({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.yellow,
+      color: Colors.green,
       height: 200,
-      child: Center(
-        child: Text('ViewModuleC'),
-      ),
+      child: Center(child: Text('ViewModuleD')),
     );
   }
 }

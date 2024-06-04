@@ -17,63 +17,37 @@ class GlobalNavBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MenuBloc, MenuState>(builder: (context, state) {
-      return Expanded(
-        child: TabBarView(
-            children: List.generate(
-          state.menus.length,
-          (index) {
-            return BlocProvider(
-              create: (_)=> ViewModuleBloc(getIt<DisplayUsecase>())
-              ..add(ViewModuleInitialized(tabId: menus[index].tabId)),
-              child: const ViewModuleList(),
+    return BlocBuilder<MenuBloc, MenuState>(
+      builder: (context, state) {
+        switch (state.status) {
+          case Status.initial:
+          case Status.loading:
+            return const Expanded(
+              child: Center(child: CircularProgressIndicator()),
             );
-          },
-        )),
-      );
-    });
-  }
-}
-
-class ViewModuleList extends StatelessWidget {
-  const ViewModuleList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ViewModuleBloc, ViewModuleState>(builder: (_, state) {
-      switch (state.status) {
-        case Status.initial:
-        case Status.loading:
-          return const Center(child: CircularProgressIndicator());
-        case Status.success:
-          return Column(
-            children: [
-              Container(
-                height: 50,
-                color: Colors.deepOrange,
-                child: Center(
-                  child: Text("${state.tabId}"),
+          case Status.success:
+            return Expanded(
+              child: TabBarView(
+                children: List.generate(
+                  state.menus.length,
+                      (index) {
+                    return BlocProvider(
+                      create: (_) => ViewModuleBloc(getIt<DisplayUsecase>())
+                        ..add(
+                          ViewModuleInitialized(tabId: menus[index].tabId),
+                        ),
+                      child: const ViewModuleList(),
+                    );
+                  },
                 ),
               ),
-              Expanded(
-                child: ListView.separated(
-                    itemBuilder: (_, index) {
-                      return SizedBox(
-                        height: 200,
-                        child: Center(
-                          child: Text("${state.viewModules[index].runtimeType}"),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (_, index) =>
-                      Divider(thickness: 4,),
-                    itemCount: state.viewModules.length),
-              ),
-            ],
-          );
-        case Status.error:
-          return const Center(child: Text('error'),);
-      }
-    });
+            );
+          case Status.error:
+            return const Center(child: Text('menu_module_bloc error'));
+        }
+      },
+    );
   }
 }
+
+
