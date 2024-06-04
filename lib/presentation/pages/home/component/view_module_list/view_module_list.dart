@@ -5,7 +5,9 @@ import '../../../../../core/utils/extensions.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 
 class ViewModuleList extends StatefulWidget {
-  const ViewModuleList({super.key});
+  const ViewModuleList({required this.tabId, super.key});
+
+  final int tabId;
 
   @override
   State<ViewModuleList> createState() => _ViewModuleListState();
@@ -44,34 +46,42 @@ class _ViewModuleListState extends State<ViewModuleList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ViewModuleBloc, ViewModuleState>(
-      builder: (_, state) {
+    return RefreshIndicator(
+      child: BlocBuilder<ViewModuleBloc, ViewModuleState>(builder: (_, state) {
         return (state.status.isInitial || state.viewModules.isEmpty)
             ? LoadingWidget()
-            : ListView(
-                controller: scrollController,
-                children: [
-                  ...state.viewModules,
-                  if (state.status.isLoading)
-                    const LoadingWidget(),
-                ],
-              );
-      },
+            : ListView(controller: scrollController, children: [
+                ...state.viewModules,
+                if (state.status.isLoading) const LoadingWidget(isBottom: true),
+              ]);
+      }),
+      onRefresh: () async => context
+          .read<ViewModuleBloc>()
+          .add(ViewModuleInitialized(tabId: widget.tabId, isRefresh: true)),
     );
   }
 }
 
 class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({super.key});
+  const LoadingWidget({this.isBottom = false, super.key});
+
+  final bool isBottom;
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 50,
-      child: Center(
-        child:
-            SizedBox(width: 20, height: 20, child: CircularProgressIndicator()),
-      ),
-    );
+    return (isBottom)
+        ? SizedBox(
+            height: 50,
+            child: Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+          )
+        : Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }
