@@ -1,4 +1,4 @@
-import 'package:c_market_app/domain/repository/display.repository.dart';
+import '../../repository/display.repository.dart';
 import 'package:injectable/injectable.dart';
 import '../base/usecase.dart';
 
