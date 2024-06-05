@@ -13,22 +13,24 @@ class PaymentButton extends StatelessWidget {
   final List<Cart> selectedCartList;
   final int totalPrice;
 
-
-  const PaymentButton({
-    super.key,
-    required this.selectedCartList,
-    required this.totalPrice});
+  const PaymentButton(
+      {super.key, required this.selectedCartList, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<PaymentBloc, PaymentState>(
-      listener: (context, state){
-        if(state.status == PaymentStatus.success){
-          context.read<CartListBloc>().add(CartListDeleted(productIds:state.productIds ?? []),);
+      listener: (context, state) {
+        if (state.status == PaymentStatus.success) {
+          context.read<CartListBloc>().add(
+                CartListDeleted(productIds: state.productIds ?? []),
+              );
 
           CommonSnackBar.successSnackBar(context, msg: "결제가 성공적으로 진행됐습니다.");
-        } else if(state.status == PaymentStatus.error) {
-          CommonSnackBar.errorSnackBar(context, error: ErrorResponse(message: state.message),);
+        } else if (state.status == PaymentStatus.error) {
+          CommonSnackBar.errorSnackBar(
+            context,
+            error: ErrorResponse(message: state.message),
+          );
         }
       },
       child: Padding(
@@ -36,14 +38,16 @@ class PaymentButton extends StatelessWidget {
         child: SizedBox(
           height: 48,
           child: TextButton(
-            onPressed: selectedCartList.isNotEmpty ? (){
-              context.read<PaymentBloc>().add(
-                PayMoney(
-                  cartList: selectedCartList,
-                  context: context,
-                ),
-              );
-            }: null,
+            onPressed: selectedCartList.isNotEmpty
+                ? () {
+                    context.read<PaymentBloc>().add(
+                          PayMoney(
+                            cartList: selectedCartList,
+                            context: context,
+                          ),
+                        );
+                  }
+                : null,
             style: TextButton.styleFrom(
               backgroundColor: selectedCartList.isNotEmpty
                   ? Theme.of(context).colorScheme.primary
@@ -52,9 +56,9 @@ class PaymentButton extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(
                     8,
-                  )
-                )
-              )
+                  ),
+                ),
+              ),
             ),
             child: Center(
               child: Text(
@@ -62,12 +66,12 @@ class PaymentButton extends StatelessWidget {
                     ? '${totalPrice.toWon()} 결제하기'
                     : '상품을 선택해주세요',
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
               ),
             ),
           ),
-        )
+        ),
       ),
     );
   }

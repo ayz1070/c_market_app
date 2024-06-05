@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/constant/app_colors.dart';
-import '../../widget/w_long_button.dart';
 
 class DetailBottomAppBar extends StatelessWidget {
   const DetailBottomAppBar({super.key});
@@ -9,17 +8,15 @@ class DetailBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(color: AppColors.primary),
       height: 72,
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-      ),
       child: const Center(
-        child:Text(
+        child: Text(
           "구매하기",
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            color: Colors.white,
             fontSize: 24,
-            color: Colors.white
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

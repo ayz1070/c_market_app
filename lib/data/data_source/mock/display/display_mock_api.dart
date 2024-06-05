@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:ffi';
 
-import 'package:c_market_app/data/data_source/mock/display/display_mock_data.dart';
-import 'package:c_market_app/data/data_source/remote/display.api.dart';
-import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
+import 'display_mock_data.dart';
+import '../../remote/display.api.dart';
+import '../../../dto/common/response_wrapper/response_wrapper.dart';
 
 
 import '../../../dto/display/menu/menu.dto.dart';
@@ -33,38 +32,29 @@ class DisplayMockApi implements DisplayApi {
       int tabId,
       int page,
       ) {
-
-    if(page == 4) {
-      return Future(
-            () =>
-            ResponseWrapper(
-              status: 'SUCCESS',
-              code: '0000',
-              message: '',
-              data: [],
-            ),
+    if (page == 4) {
+      return Future.delayed(
+        Duration(milliseconds: 800),
+            () => ResponseWrapper(
+          status: 'SUCCESS',
+          code: '0000',
+          message: '',
+          data: [],
+        ),
       );
     }
 
-    final endOfTabId = tabId % 10;
-    late String source;
-    switch (endOfTabId) {
-      case 1:
-        source = DisplayMockData.viewModulesByTabIdCaseOne;
-      case 2:
-        source = DisplayMockData.viewModulesByTabIdCaseTwo;
-      case 3:
-        source = DisplayMockData.viewModulesByTabIdCaseThree;
-    }
 
-    return Future(
-          () =>
-          ResponseWrapper(
-              status: 'SUCCESS',
-              code: '0000',
-              message: '',
-              data: viewModuleParser(source),
-          ),
+    String source = DisplayMockData.getViewModules();
+
+    return Future.delayed(
+      Duration(milliseconds: 800),
+          () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: '',
+        data: viewModuleParser(source),
+      ),
     );
   }
 
@@ -72,6 +62,7 @@ class DisplayMockApi implements DisplayApi {
     List<MenuDto> menus = [];
     final List json = jsonDecode(source);
     menus = json.map((e) => MenuDto.fromJson(e)).toList();
+
     return menus;
   }
 

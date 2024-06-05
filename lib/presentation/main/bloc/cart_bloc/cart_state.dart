@@ -14,7 +14,7 @@ class CartState with _$CartState {
       imageUrl: '',
       price: -1,
       originalPrice: -1,
-      discrountRate: -1,
+      discountRate: -1,
       reviewCount: -1,
     ))
     ProductInfo productInfo,

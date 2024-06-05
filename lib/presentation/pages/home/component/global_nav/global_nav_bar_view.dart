@@ -18,25 +18,37 @@ class GlobalNavBarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MenuBloc, MenuState>(
       builder: (context, state) {
-        return Expanded(
-          child: TabBarView(
-            children: List.generate(
-              state.menus.length,
-              (index) {
-                final tabId = menus[index].tabId;
+        switch (state.status) {
+          case Status.initial:
+          case Status.loading:
+            return const Expanded(
+              child: Center(child: CircularProgressIndicator()),
+            );
+          case Status.success:
+            return Expanded(
+              child: TabBarView(
+                children: List.generate(
+                  state.menus.length,
+                      (index) {
+                        final tabId = menus[index].tabId;
 
-                return BlocProvider(
-                  create: (_) => getIt<ViewModuleBloc>()
-                    ..add(
-                      ViewModuleInitialized(tabId: tabId),
-                    ),
-                  child: ViewModuleList(tabId: tabId),
-                );
-              },
-            ),
-          ),
-        );
+                    return BlocProvider(
+                      create: (_) => getIt<ViewModuleBloc>()
+                        ..add(
+                          ViewModuleInitialized(tabId: tabId),
+                        ),
+                      child: ViewModuleList(tabId: tabId),
+                    );
+                  },
+                ),
+              ),
+            );
+          case Status.error:
+            return const Center(child: Text('menu_module_bloc error'));
+        }
       },
     );
   }
 }
+
+

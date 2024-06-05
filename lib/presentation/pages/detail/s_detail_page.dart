@@ -1,10 +1,8 @@
-import 'package:c_market_app/presentation/pages/detail/s_review_page.dart';
-import 'package:c_market_app/presentation/pages/detail/w_detail_app_bar.dart';
-import 'package:c_market_app/presentation/pages/detail/w_review_box.dart';
-import 'package:c_market_app/presentation/pages/detail/w_small_stars.dart';
-import 'package:c_market_app/presentation/widget/w_long_button.dart';
+import 's_review_page.dart';
+import 'w_detail_app_bar.dart';
+import 'w_review_box.dart';
+import '../../widget/w_long_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'w_detail_bottom_app_bar.dart';
 

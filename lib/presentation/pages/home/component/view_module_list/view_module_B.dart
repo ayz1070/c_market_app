@@ -8,7 +8,7 @@ class ViewModuleB extends StatelessWidget with ViewModuleWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Colors.red,
       height: 200,
       child: Center(
         child: Text('ViewModuleB'),

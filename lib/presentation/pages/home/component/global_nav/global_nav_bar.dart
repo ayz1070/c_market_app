@@ -26,19 +26,19 @@ class GlobalNavBar extends StatelessWidget {
               TabBar(
                 tabs: List.generate(
                   menus.length,
-                      (index) => Tab(text: menus[index].title),
+                  (index) => Tab(text: menus[index].title),
                 ),
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(color: colorScheme.primary, width: 2),
                 ),
                 indicatorSize: TabBarIndicatorSize.label,
+                dividerColor: Colors.transparent,
                 labelColor: colorScheme.primary,
                 labelStyle: textTheme.titleSmall?.semiBold,
                 labelPadding: EdgeInsets.symmetric(horizontal: 8),
                 unselectedLabelColor: colorScheme.contentSecondary,
                 unselectedLabelStyle: textTheme.titleSmall,
                 onTap: (index) {},
-                dividerColor: Colors.transparent,
               ),
               if (state.status.isLoading)
                 Positioned.fill(
