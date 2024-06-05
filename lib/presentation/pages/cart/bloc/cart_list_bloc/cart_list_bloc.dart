@@ -279,4 +279,9 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
 
     return price;
   }
+  @override
+  void onChange(Change<CartListState> change) {
+    super.onChange(change);
+    print('[list]: ${change.currentState.status} --> ${change.nextState.status}');
+  }
 }
