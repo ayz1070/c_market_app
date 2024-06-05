@@ -26,28 +26,6 @@ class CategoryProductViewModule extends StatefulWidget with ViewModuleWidget {
 
 class _CategoryProductViewModuleState extends State<CategoryProductViewModule>
     with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(
-      length: widget.info.tabs.length,
-      vsync: this,
-    )..addListener(
-          () {
-        setState(() {});
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    _tabController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,52 +43,27 @@ class _CategoryProductViewModuleState extends State<CategoryProductViewModule>
         const SizedBox(
           height: 12,
         ),
-        TabBar(
-          tabs: List.generate(
-            info.tabs.length,
-                (index) => Tab(
-              text: info.tabs[index] ?? '',
-            ),
-          ),
-          controller: _tabController,
-          isScrollable: true,
-          indicatorPadding: EdgeInsets.symmetric(
-            horizontal: 13,
-          ),
-          dividerColor: Colors.transparent,
-        ),
-        const SizedBox(
-          height: 12,
-        ),
         Padding(
           padding: Constants.horizontalPadding,
           child: AspectRatio(
             aspectRatio: 343 / 452,
-            child: TabBarView(
-              children: List.generate(
-                info.tabs.length,
-                    (index) {
-                  return GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 8,
-                      childAspectRatio: ((343 - 16) / 3) / ((452 - 12) / 2),
-                    ),
-                    itemBuilder: (_, index) {
-                      final productInfo = info.products[index];
-
-                      return SmallProductCard(
-                        context: context,
-                        productInfo: productInfo,
-                      );
-                    },
-                    itemCount: info.products.length,
-                  );
-                },
+            child: GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 8,
+                childAspectRatio: ((343 - 16) / 3) / ((452 - 12) / 2),
               ),
-              controller: _tabController,
+              itemBuilder: (_, index) {
+                final productInfo = info.products[index];
+
+                return SmallProductCard(
+                  context: context,
+                  productInfo: productInfo,
+                );
+              },
+              itemCount: info.products.length,
             ),
           ),
         ),
@@ -133,7 +86,7 @@ class _CategoryProductViewModuleState extends State<CategoryProductViewModule>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${info.tabs[_tabController.index]} 전체보기',
+                  '전체보기',
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall

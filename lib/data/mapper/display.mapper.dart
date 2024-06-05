@@ -20,7 +20,6 @@ extension ViewModuleX on ViewModuleDto {
       subtitle: subtitle ?? '',
       imageUrl: imageUrl ?? '',
       products: products?.map((dto) => dto.toModel()).toList() ?? [],
-      tabs: tabs ?? [],
     );
   }
 }

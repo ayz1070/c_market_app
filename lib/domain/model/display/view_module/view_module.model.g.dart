@@ -15,7 +15,6 @@ _$ViewModuleImpl _$$ViewModuleImplFromJson(Map<String, dynamic> json) =>
       products: (json['products'] as List<dynamic>)
           .map((e) => ProductInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
-      tabs: (json['tabs'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ViewModuleImplToJson(_$ViewModuleImpl instance) =>
@@ -25,5 +24,4 @@ Map<String, dynamic> _$$ViewModuleImplToJson(_$ViewModuleImpl instance) =>
       'subtitle': instance.subtitle,
       'imageUrl': instance.imageUrl,
       'products': instance.products,
-      'tabs': instance.tabs,
     };
