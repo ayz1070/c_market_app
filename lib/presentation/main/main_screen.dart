@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../core/utils/snack_bar/common_snack_bar.dart';
 import '../pages/home/home_page.dart';
 import '../pages/search/search_page.dart';
 import '../pages/user/user_page.dart';
@@ -30,9 +31,14 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       appBar: const TopAppBar(),
       body: BlocListener<CartBloc, CartState>(
-        listener: (context, state){
-          cartBottomSheet(context)
+        listener: (_, state) async {
+          final bottomSheet = await cartBottomSheet(context)
               .whenComplete(() => context.read<CartBloc>().add(CartClosed()));
+          final bool isSuccess = await bottomSheet ?? false;
+
+          if (isSuccess) {
+            CommonSnackBar.addCartSnackBar(context);
+          }
         },
         listenWhen: (prev, cur) => prev.status.isClose && cur.status.isOpen,
         child: BlocBuilder<BottomNavCubit, BottomNav>(
