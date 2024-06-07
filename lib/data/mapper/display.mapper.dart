@@ -24,6 +24,23 @@ extension ViewModuleX on ViewModuleDto {
   }
 }
 
+
+/// MODEL -> ENTITY
+extension ProductInfoEx on ProductInfo {
+  ProductInfoEntity toEntity() {
+    return ProductInfoEntity(
+      productId: productId,
+      title: title,
+      subtitle: subtitle,
+      imageUrl: imageUrl,
+      price: price,
+      originalPrice: originalPrice,
+      discountRate: discountRate,
+      reviewCount: reviewCount,
+    );
+  }
+}
+
 /// MODEL -> ENTITY
 extension ProductInfoDtoEx on ProductInfoDto {
   ProductInfo toModel() {
@@ -63,8 +80,8 @@ extension CartEntityEx on CartEntity {
   }
 }
 
-// extension CartEx on Cart {
-//   CartEntity toEntity() {
-//     return CartEntity(product: product.toEntity(), quantity: quantity);
-//   }
-// }
+extension CartEx on Cart {
+  CartEntity toEntity() {
+    return CartEntity(product: product.toEntity(), quantity: quantity);
+  }
+}
