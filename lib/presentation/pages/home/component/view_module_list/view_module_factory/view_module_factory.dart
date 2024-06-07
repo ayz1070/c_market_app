@@ -17,7 +17,6 @@ enum Modules {
   viewModuleC,
   viewModuleD,
   viewModuleE,
-  categoryProductViewModule,
   Beauty
 }
 
@@ -48,8 +47,6 @@ extension ModulesX on Modules {
         return const ViewModuleD();
       case Modules.viewModuleE:
         return const ViewModuleE();
-      case Modules.categoryProductViewModule:
-        return CategoryProductViewModule(info: info);
       case Modules.Beauty:
         return CategoryProductViewModule(info: info);
     }
