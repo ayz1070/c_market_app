@@ -82,7 +82,7 @@ class DisplayMockData {
     var viewModules = [];
 
     final List<String> types = [
-      'category_product_view_module',
+      'Beauty',
     ];
 
     var products = [productInfo, productInfo2, productInfo3, productInfo4, productInfo5, productInfo6];
@@ -90,7 +90,7 @@ class DisplayMockData {
     for (var type in types) {
       viewModules.add('''{
             "type" : "${type}",
-            "title" : "${type}-title",
+            "title" : "${type}",
             "subtitle": "${type}-subtitle",
             "time": ${DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch},
             "imageUrl": "https://images.unsplash.com/photo-1661956603025-8310b2e3036d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
