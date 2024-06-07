@@ -18,7 +18,9 @@ enum Modules {
   viewModuleD,
   viewModuleE,
   categoryProductViewModule,
-  Beauty
+  Beauty,
+  Best6,
+  Benefit
 }
 
 class ViewModuleFactory {
@@ -51,6 +53,10 @@ extension ModulesX on Modules {
       case Modules.categoryProductViewModule:
         return CategoryProductViewModule(info: info);
       case Modules.Beauty:
+        return CategoryProductViewModule(info: info);
+      case Modules.Best6:
+        return CategoryProductViewModule(info: info);
+      case Modules.Benefit:
         return CategoryProductViewModule(info: info);
     }
   }

@@ -78,26 +78,45 @@ class DisplayMockData {
         "imageUrl": "https://images.unsplash.com/photo-1614267861476-0d129972a0f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
       }''';
 
-  static String getViewModules() {
+  static String getViewModules({required int tabId}) {
     var viewModules = [];
 
     final List<String> types = [
       'Beauty',
+      'Best6',
+      'Benefit'
     ];
 
-    var products = [productInfo, productInfo2, productInfo3, productInfo4, productInfo5, productInfo6];
+    var products1 = [productInfo, productInfo2, productInfo3, productInfo4, productInfo5, productInfo6];
+    var products2 = [productInfo2, productInfo, productInfo4, productInfo3, productInfo6, productInfo5];
+    var products3 = [productInfo3, productInfo2, productInfo4, productInfo5, productInfo6, productInfo];
 
-    for (var type in types) {
-      viewModules.add('''{
-            "type" : "${type}",
-            "title" : "${type}",
-            "subtitle": "${type}-subtitle",
-            "time": ${DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch},
-            "imageUrl": "https://images.unsplash.com/photo-1661956603025-8310b2e3036d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-            "products":[${products.join(',')}],
-            "tabs": ["가전·가구 특가","프리미엄 주방 특가","뷰티 특가","프리미엄 식품 특가"]
-          }''');
+    String type;
+    List<String> products;
+
+    if (tabId == 10001) {
+      type = types[0];
+      products = products1;
+    } else if (tabId == 10002) {
+      type = types[1];
+      products = products2;
+    } else if (tabId == 10003) {
+      type = types[2];
+      products = products3;
+    } else {
+      type = types[0];
+      products = products1;
     }
+
+    viewModules.add('''{
+      "type" : "${type}",
+      "title" : "${type}",
+      "subtitle": "${type}-subtitle",
+      "time": ${DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch},
+      "imageUrl": "https://images.unsplash.com/photo-1661956603025-8310b2e3036d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      "products":[${products.join(',')}],
+      "tabs": ["가전·가구 특가","프리미엄 주방 특가","뷰티 특가","프리미엄 식품 특가"]
+    }''');
 
     return '[${viewModules.join(',')}]';
   }
