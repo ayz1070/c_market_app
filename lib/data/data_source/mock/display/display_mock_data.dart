@@ -20,7 +20,7 @@ class DisplayMockData {
   static final String productInfo = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",
         "title":"블랙 쿠션(리필포함) 6종 택 1",
-        "subtitle":"This is sample product info. it has a long long subtitle text. plz check this!",
+        "subtitle":"내 피부 같은 초밀착 커버",
         "price": 5000,
         "originalPrice": 10000,
         "discountRate": 50,
@@ -30,7 +30,7 @@ class DisplayMockData {
   static final String productInfo2 = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",
         "title":"선인장 바디워시 1L (대용량, 비건)",
-        "subtitle":"This is sample product info. it has a long long subtitle text. plz check this!",
+        "subtitle":"넉넉하게 사용하는 고보습 바디 워시",
         "price": 6400,
         "originalPrice": 8000,
         "discountRate": 20,
@@ -40,7 +40,7 @@ class DisplayMockData {
   static final String productInfo3 = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",
         "title":"[피토메르] 특별 기획세트Ⅱ (세럼 2종(본품) + 토너(본품) 구성)",
-        "subtitle":"This is sample product info. it has a long long subtitle text. plz check this!",
+        "subtitle":"상쾌함과 개운함이 오래가는 치약",
         "price": 8400,
         "originalPrice": 12000,
         "discountRate": 30,
@@ -60,7 +60,7 @@ class DisplayMockData {
   static final String productInfo5 = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",
         "title":"닥터지 레드 블래미쉬 수분 크림",
-        "subtitle":"This is sample product info. it has a long long subtitle text. plz check this!",
+        "subtitle":"탄탄하게 빛나는 수분 광채 피부",
         "price": 20800,
         "originalPrice": 26000,
         "discountRate": 20,
@@ -70,7 +70,7 @@ class DisplayMockData {
   static final String productInfo6 = '''{
         "productId": "${DateTime.now().microsecondsSinceEpoch}",
         "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
-        "subtitle":"This is sample product info. it has a long long subtitle text. plz check this!",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
         "price": 14400,
         "originalPrice": 16000,
         "discountRate": 20,
