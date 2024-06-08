@@ -33,11 +33,13 @@ dependencies:
   cached_network_image: ^3.2.3
   bootpay:
   kakao_flutter_sdk_user:
-  firebase_core: ^2.15.0
-  firebase_auth: ^4.7.2
+  firebase_core: ^3.0.0
+  firebase_messaging: ^15.0.0
+  cloud_firestore: ^5.0.0
+  firebase_auth: ^5.0.0
   shimmer:
   flutter_dotenv:
-  firebase_crashlytics: ^3.3.5
+  firebase_crashlytics: ^4.0.0
 
 
 dev_dependencies:

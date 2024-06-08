@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+
 import 'presentation/routes/routes.dart';
 import 'dependency_injection.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,8 @@ void main() async {
   //setLocator();
 
   configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
