@@ -4,7 +4,6 @@ import 'package:retrofit/http.dart';
 
 
 import '../../dto/display/display.dto.dart';
-import '../../dto/display/menu/menu.dto.dart';
 
 part 'display.api.g.dart';
 

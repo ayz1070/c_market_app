@@ -1,9 +1,7 @@
-import 'package:c_market_app/core/utils/constant.dart';
-import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
-import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
-import 'package:c_market_app/domain/repository/repository.dart';
+import '../../core/utils/constant.dart';
+import '../../data/dto/common/response_wrapper/response_wrapper.dart';
+import 'repository.dart';
 
-import '../model/display/cart/cart.model.dart';
 import '../model/display/display.model.dart';
 
 abstract class DisplayRepository extends Repository{

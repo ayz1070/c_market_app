@@ -20,7 +20,7 @@ class CustomThemeData {
           labelStyle: CustomTheme.textTheme.titleSmall.semiBold,
           unselectedLabelColor: CustomTheme.colorScheme.contentSecondary,
           unselectedLabelStyle: CustomTheme.textTheme.titleSmall,
-          overlayColor: MaterialStatePropertyAll<Color>(
+          overlayColor: WidgetStatePropertyAll<Color>(
             Colors.grey[300] ?? Colors.grey,
           ),
         ),

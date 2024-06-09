@@ -115,7 +115,7 @@ class CartPriceInfo extends StatelessWidget {
                 child: Text(
                   '적립',
                   style: textTheme.labelSmall.semiBold
-                      ?.copyWith(color: colorScheme.background),
+                      ?.copyWith(color: colorScheme.surface),
                 ),
               ),
               const SizedBox(width: 8),

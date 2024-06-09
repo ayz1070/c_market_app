@@ -1,4 +1,4 @@
-import 'package:c_market_app/presentation/pages/detail/s_review_page.dart';
+import 's_review_page.dart';
 import 'package:flutter/material.dart';
 
 class AddAppBar extends StatelessWidget implements PreferredSizeWidget{

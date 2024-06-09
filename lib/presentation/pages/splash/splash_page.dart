@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:c_market_app/presentation/routes/route_path.dart';
+import '../../routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';

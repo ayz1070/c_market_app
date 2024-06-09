@@ -1,4 +1,4 @@
-import 'package:c_market_app/presentation/pages/detail/w_big_stars.dart';
+import 'w_big_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 

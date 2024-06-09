@@ -1,10 +1,10 @@
-import 'package:c_market_app/core/utils/constant.dart';
-import 'package:c_market_app/data/data_source/remote/display.api.dart';
-import 'package:c_market_app/data/dto/common/response_wrapper/response_wrapper.dart';
-import 'package:c_market_app/data/mapper/common.mapper.dart';
-import 'package:c_market_app/data/mapper/display.mapper.dart';
-import 'package:c_market_app/domain/model/display/menu/menu.model.dart';
-import 'package:c_market_app/domain/repository/display.repository.dart';
+import '../../core/utils/constant.dart';
+import '../data_source/remote/display.api.dart';
+import '../dto/common/response_wrapper/response_wrapper.dart';
+import '../mapper/common.mapper.dart';
+import '../mapper/display.mapper.dart';
+import '../../domain/model/display/menu/menu.model.dart';
+import '../../domain/repository/display.repository.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/model/display/cart/cart.model.dart';
