@@ -36,6 +36,9 @@ class _MyPageState extends State<MyPage> {
           child: Column(
             children: [
               Image.asset('nav-home-on.svg'),
+              Image.asset('nav-search.svg'),
+              Image.asset('nav-user.svg'),
+
             ],
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:c_market_app/core/utils/error/error_response.dart';
+import '../../../core/utils/error/error_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result.freezed.dart';

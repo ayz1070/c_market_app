@@ -107,7 +107,7 @@ class CartListView extends StatelessWidget {
           ),
           preferredSize: Size.fromHeight(48),
         ),
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         centerTitle: true,
       ),
       body: BlocBuilder<CartListBloc, CartListState>(

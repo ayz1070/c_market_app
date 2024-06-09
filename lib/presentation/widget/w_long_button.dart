@@ -1,4 +1,4 @@
-import 'package:c_market_app/core/theme/constant/app_colors.dart';
+import '../../core/theme/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class LongButton extends StatelessWidget {

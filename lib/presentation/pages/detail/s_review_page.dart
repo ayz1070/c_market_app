@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'w_big_stars.dart';
-import 'w_detail_app_bar.dart';
 import 'w_review_app_bar.dart';
 import 'w_review_box.dart';
 import 'w_review_box_big.dart';

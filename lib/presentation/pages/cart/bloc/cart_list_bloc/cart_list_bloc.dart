@@ -9,7 +9,6 @@ import '../../../../../core/utils/logger.dart';
 import '../../../../../domain/model/display/display.model.dart';
 
 import '../../../../../domain/usecase/display/cart/cart.usecase.dart';
-import '../../../../../domain/usecase/display/cart/change_cart_qty.usecase.dart';
 import '../../../../../domain/usecase/display/display.usecase.dart';
 
 part 'cart_list_event.dart';

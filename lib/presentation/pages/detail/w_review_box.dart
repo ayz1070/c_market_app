@@ -1,4 +1,4 @@
-import 'package:c_market_app/presentation/pages/detail/w_small_stars.dart';
+import 'w_small_stars.dart';
 import 'package:flutter/material.dart';
 
 class ReviewBox extends StatelessWidget {
