@@ -72,6 +72,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         _isUploading = false;
       });
 
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => UserPage(),
+        ),
+      );
+
       //
     } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {

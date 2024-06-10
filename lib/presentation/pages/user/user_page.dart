@@ -113,7 +113,9 @@ class UserPage extends StatelessWidget {
                 style: TextButton.styleFrom(alignment: Alignment.centerLeft),
                 child: Text('알림 설정')),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
                 style: TextButton.styleFrom(alignment: Alignment.centerLeft),
                 child: Text('로그아웃')),
             TextButton(

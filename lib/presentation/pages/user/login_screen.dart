@@ -28,7 +28,12 @@ class _LoginScreenState extends State<LoginScreen> {
       final userCredentials = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: _enteredEmail, password: _enteredPassword);
-      print(userCredentials);
+      //print(userCredentials);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => UserPage(),
+        ),
+      );
     } on FirebaseAuthException catch (error) {
       if (error.code == 'user-not-found') {
         ScaffoldMessenger.of(context).clearSnackBars();
