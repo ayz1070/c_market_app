@@ -44,7 +44,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RoutePath.notification,
       name: 'notification',
-      builder: (context, state) => const NotificationPage(),
+      builder: (context, state) => NotificationPage(),
     ),
   ],
   initialLocation: '/splash',
