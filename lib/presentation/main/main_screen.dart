@@ -49,7 +49,7 @@ class MainScreenView extends StatelessWidget {
               case BottomNav.search:
                 return const SearchPage();
               case BottomNav.user:
-                return const UserPage();
+                return UserPage();
             }
           },
         ),
