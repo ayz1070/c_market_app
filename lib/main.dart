@@ -56,13 +56,8 @@ class MyApp extends StatelessWidget {
           lazy: false,
         ),
         BlocProvider<NotificationBloc>(
-          create: (context) => NotificationBloc(
-            FetchNotifications(
-              NotificationRepositoryImpl(
-                NotificationDataSource(FirebaseFirestore.instance),
-              ),
-            ),
-          ),
+          create: (context) =>
+              getIt<NotificationBloc>()..add(LoadNotificationsEvent()),
         ),
         // Add other providers if needed
       ],
