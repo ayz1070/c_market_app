@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../domain/model/display/notification/notification.model.dart';
 import '../../../../domain/usecase/display/notifications/fetch_notifications.dart';
@@ -8,6 +9,7 @@ part 'notification_event.dart';
 
 part 'notification_state.dart';
 
+@injectable
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final FetchNotifications fetchNotifications;
 
