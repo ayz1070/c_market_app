@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'w_add_app_bar.dart';
-import 'w_review_box_big.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ReviewAddPage extends StatefulWidget {

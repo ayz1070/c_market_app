@@ -4,11 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
 import '../../../dependency_injection.dart';
-import '../../../domain/usecase/display/display.usecase.dart';
-import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubit.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
+import 'component/global_nav/global_nav_bar_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,12 +39,26 @@ class HomePageView extends StatelessWidget {
         builder: (_, state) {
           switch (state.status) {
             case Status.initial:
-            case Status.loading:
               return Center(child: CircularProgressIndicator());
+            case Status.loading:
+              return DefaultTabController(
+                length: state.menus.length,
+                child: Column(
+                  children: [
+                    GlobalNavBar(state.menus),
+                    GlobalNavBarView(state.mallType, state.menus),
+                  ],
+                ),
+              );
             case Status.success:
               return DefaultTabController(
                 length: state.menus.length,
-                child: GlobalNavBar(state.menus),
+                child: Column(
+                  children: [
+                    GlobalNavBar(state.menus),
+                    GlobalNavBarView(state.mallType, state.menus),
+                  ],
+                ),
                 animationDuration: const Duration(milliseconds: 300),
               );
             case Status.error:

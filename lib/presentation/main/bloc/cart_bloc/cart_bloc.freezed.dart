@@ -168,7 +168,7 @@ class _$CartStateImpl implements _CartState {
           imageUrl: '',
           price: -1,
           originalPrice: -1,
-          discrountRate: -1,
+          discountRate: -1,
           reviewCount: -1),
       this.quantity = 1,
       this.totalPrice = 0});

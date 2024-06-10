@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:c_market_app/presentation/routes/route_path.dart';
+import '../../routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -17,14 +17,12 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Timer(Duration(seconds: 2), () => context.go(RoutePath.main));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Todo: 하드코딩된 값 변경
+      body: Center(child: SvgPicture.asset('assets/svg/main_logo.svg')),
       backgroundColor: Color(0xFFDCAE96),
-      body: Center(
-        child: SvgPicture.asset('assets/svg/main_logo.svg'),
-      ),
     );
   }
 }

@@ -33,16 +33,15 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
 
   ViewModuleBloc(this._displayUsecase) : super(ViewModuleState()) {
     on<ViewModuleInitialized>(_onViewModuleInitialized);
-    on<ViewModuleFetched>(
-      _onViewModuleFetched,
+    on<ViewModuleFetched>(_onViewModuleFetched,
       transformer: _throttleDroppable(Duration(milliseconds: 400)),
     );
   }
 
   Future<void> _onViewModuleInitialized(
-      ViewModuleInitialized event,
-      Emitter<ViewModuleState> emit,
-      ) async {
+    ViewModuleInitialized event,
+    Emitter<ViewModuleState> emit,
+  ) async {
     try {
       emit(state.copyWith(status: Status.loading));
 
@@ -61,8 +60,9 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
       response.when(
         success: (data) {
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
-          final List<Widget> viewModules =
-          data.map((e) => viewModuleFactory.textToWidget(e)).toList();
+          final List<Widget> viewModules = (data as List<ViewModule>)
+              .map((e) => viewModuleFactory.textToWidget(e))
+              .toList();
           emit(state.copyWith(
             status: Status.success,
             tabId: tabId,
@@ -84,25 +84,24 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     }
   }
 
-  Future<Result<List<ViewModule>>> _fetch({
-    required int tabId,
-    int page = 1,
-  }) async {
+  Future<Result<List<ViewModule>>> _fetch(
+      {required int tabId, int page = 1,}) async {
     return await _displayUsecase.execute(
       usecase: GetViewModulesUsecase(tabId: tabId, page: page),
     );
   }
 
-  Future<void> _onViewModuleFetched(ViewModuleFetched event,
-      Emitter<ViewModuleState> emit) async {
+  Future<void> _onViewModuleFetched(
+      ViewModuleFetched event, Emitter<ViewModuleState> emit,) async {
+    print('[test] fetched call');
     // 끝 페이지에 도달했다면 리턴
     if (state.isEndOfPage) return;
     final nextPage = state.currentPage + 1;
     final tabId = state.tabId;
 
     emit(state.copyWith(status: Status.loading));
-    final response = await _fetch(tabId: tabId, page: nextPage);
     try {
+      final response = await _fetch(tabId: tabId, page: nextPage);
       response.when(
         success: (data) {
           if (data.isEmpty) {
@@ -113,17 +112,19 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
                 isEndOfPage: true,
               ),
             );
+
+            return;
           }
           final List<Widget> viewModules = [...state.viewModules];
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
           viewModules.addAll(List.generate(
             data.length,
-                (index) => viewModuleFactory.textToWidget(data[index]),
+            (index) => viewModuleFactory.textToWidget(data[index]),
           ));
 
           emit(state.copyWith(
             status: Status.success,
-            tabId: tabId,
+            currentPage: nextPage,
             viewModules: viewModules,
           ));
         },

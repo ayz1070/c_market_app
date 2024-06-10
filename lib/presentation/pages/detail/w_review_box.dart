@@ -1,4 +1,4 @@
-import 'package:c_market_app/presentation/pages/detail/w_small_stars.dart';
+import 'w_small_stars.dart';
 import 'package:flutter/material.dart';
 
 class ReviewBox extends StatelessWidget {
@@ -19,19 +19,19 @@ class ReviewBox extends StatelessWidget {
           Divider(),
           // 유저 이름 텍스트
           Text('${userName}'),
-          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          Padding(padding: const EdgeInsets.only(bottom: 5)),
           // 날짜 텍스트
           Text(
             '$date',
             style: TextStyle(fontSize: 10),
           ),
-          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          Padding(padding: const EdgeInsets.only(bottom: 5)),
           // 별점 아이콘들
           SmallStars(starCount: starCount),
-          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 5)),
+          Padding(padding: const EdgeInsets.only(bottom: 5)),
           // 후기 텍스트
           Text('$comment'),
-        ]
+        ],
       ),
     );
   }

@@ -12,7 +12,7 @@ part of 'product_info.dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ProductInfoDto _$ProductInfoDtoFromJson(Map<String, dynamic> json) {
   return _ProductInfoDto.fromJson(json);
@@ -112,11 +112,11 @@ class _$ProductInfoDtoCopyWithImpl<$Res, $Val extends ProductInfoDto>
 }
 
 /// @nodoc
-abstract class _$$_ProductInfoDtoCopyWith<$Res>
+abstract class _$$ProductInfoDtoImplCopyWith<$Res>
     implements $ProductInfoDtoCopyWith<$Res> {
-  factory _$$_ProductInfoDtoCopyWith(
-          _$_ProductInfoDto value, $Res Function(_$_ProductInfoDto) then) =
-      __$$_ProductInfoDtoCopyWithImpl<$Res>;
+  factory _$$ProductInfoDtoImplCopyWith(_$ProductInfoDtoImpl value,
+          $Res Function(_$ProductInfoDtoImpl) then) =
+      __$$ProductInfoDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -131,11 +131,11 @@ abstract class _$$_ProductInfoDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductInfoDtoCopyWithImpl<$Res>
-    extends _$ProductInfoDtoCopyWithImpl<$Res, _$_ProductInfoDto>
-    implements _$$_ProductInfoDtoCopyWith<$Res> {
-  __$$_ProductInfoDtoCopyWithImpl(
-      _$_ProductInfoDto _value, $Res Function(_$_ProductInfoDto) _then)
+class __$$ProductInfoDtoImplCopyWithImpl<$Res>
+    extends _$ProductInfoDtoCopyWithImpl<$Res, _$ProductInfoDtoImpl>
+    implements _$$ProductInfoDtoImplCopyWith<$Res> {
+  __$$ProductInfoDtoImplCopyWithImpl(
+      _$ProductInfoDtoImpl _value, $Res Function(_$ProductInfoDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -150,7 +150,7 @@ class __$$_ProductInfoDtoCopyWithImpl<$Res>
     Object? discountRate = freezed,
     Object? reviewCount = freezed,
   }) {
-    return _then(_$_ProductInfoDto(
+    return _then(_$ProductInfoDtoImpl(
       productId: freezed == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -189,8 +189,8 @@ class __$$_ProductInfoDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductInfoDto implements _ProductInfoDto {
-  const _$_ProductInfoDto(
+class _$ProductInfoDtoImpl implements _ProductInfoDto {
+  const _$ProductInfoDtoImpl(
       {this.productId = '',
       this.title = '',
       this.subtitle = '',
@@ -200,8 +200,8 @@ class _$_ProductInfoDto implements _ProductInfoDto {
       this.discountRate = -1,
       this.reviewCount = -1});
 
-  factory _$_ProductInfoDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductInfoDtoFromJson(json);
+  factory _$ProductInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductInfoDtoImplFromJson(json);
 
   @override
   @JsonKey()
@@ -234,10 +234,10 @@ class _$_ProductInfoDto implements _ProductInfoDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductInfoDto &&
+            other is _$ProductInfoDtoImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.title, title) || other.title == title) &&
@@ -262,12 +262,13 @@ class _$_ProductInfoDto implements _ProductInfoDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductInfoDtoCopyWith<_$_ProductInfoDto> get copyWith =>
-      __$$_ProductInfoDtoCopyWithImpl<_$_ProductInfoDto>(this, _$identity);
+  _$$ProductInfoDtoImplCopyWith<_$ProductInfoDtoImpl> get copyWith =>
+      __$$ProductInfoDtoImplCopyWithImpl<_$ProductInfoDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductInfoDtoToJson(
+    return _$$ProductInfoDtoImplToJson(
       this,
     );
   }
@@ -282,10 +283,10 @@ abstract class _ProductInfoDto implements ProductInfoDto {
       final int? price,
       final int? originalPrice,
       final int? discountRate,
-      final int? reviewCount}) = _$_ProductInfoDto;
+      final int? reviewCount}) = _$ProductInfoDtoImpl;
 
   factory _ProductInfoDto.fromJson(Map<String, dynamic> json) =
-      _$_ProductInfoDto.fromJson;
+      _$ProductInfoDtoImpl.fromJson;
 
   @override
   String? get productId;
@@ -305,6 +306,6 @@ abstract class _ProductInfoDto implements ProductInfoDto {
   int? get reviewCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductInfoDtoCopyWith<_$_ProductInfoDto> get copyWith =>
+  _$$ProductInfoDtoImplCopyWith<_$ProductInfoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
