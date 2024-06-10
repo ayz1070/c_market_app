@@ -1,8 +1,10 @@
 // Firebase Firestore에서 데이터를 가져오는 데이터 소스 클래스
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
 import '../dto/display/notification/notification_info.dto.dart';
 
+@lazySingleton
 class NotificationDataSource {
   final FirebaseFirestore _firestore;
 
