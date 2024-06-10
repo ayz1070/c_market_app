@@ -1,5 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../../domain/model/display/review/review.dart';
+
 part 'product_info.entity.g.dart';
 
 @HiveType(typeId: 0)

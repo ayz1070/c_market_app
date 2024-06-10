@@ -1,16 +1,22 @@
+import 'package:c_market_app/presentation/pages/detail/s_review_add_page.dart';
+import 'package:c_market_app/presentation/pages/detail/test/test_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../domain/model/display/display.model.dart';
+import '../../../domain/model/display/review/review.dart';
 import 'bloc/review_bloc.dart';
-import 'w_big_stars.dart';
-import 'w_detail_app_bar.dart';
 
 import 'w_review_app_bar.dart';
 import 'w_review_box.dart';
 import 'w_review_box_big.dart';
 
 class ReviewPage extends StatelessWidget {
-  const ReviewPage({super.key});
+  final ProductInfo productInfo;
+  final List<Review> reviewList;
+
+  const ReviewPage(
+      {super.key, required this.productInfo, required this.reviewList});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +26,14 @@ class ReviewPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: ReviewAppBar(
-            title: '리뷰',
+          title: '리뷰',
         ),
         body: ListView(
           children: [
-            BigReviewBox(reviewAvg: 4, starCount: 4,),
-      
+            BigReviewBox(
+              reviewAvg: TestData.getTestAverage(),
+              starCount: (TestData.getTestAverage()-0.99).toInt(),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Text(
@@ -36,41 +44,34 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
             ),
-      
             Expanded(
-      
-              child: ListView(
-
+              child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                children: [
-                  ReviewBox(
-                  userName: '안영준',
-                  date: '24/05/28',
-                  comment: '발림성이 좋아요!!',
-                  starCount: 5),
-                  ReviewBox(
-                      userName: '이경수',
-                      date: '24/05/28',
-                      comment: '제 피부에는 맞질 않네요...',
-                      starCount: 3),
-
-                  ReviewBox(
-                      userName: '방정묵',
-                      date: '24/05/28',
-                      comment: '만족합니다!!',
-                      starCount: 4),
-
-                  ReviewBox(
-                      userName: '강민주',
-                      date: '24/05/28',
-                      comment: '가격이 저렴하네요!!!!',
-                      starCount: 5),
-
-                ],
+                itemCount: reviewList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = reviewList[index];
+                  return ReviewBox(
+                    userName: '${item.nickName}',
+                    date: '${item.date}',
+                    comment: '${item.content}',
+                    starCount: item.score.toInt(),
+                  );
+                },
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => ReviewAddPage(
+                      productInfo: productInfo,
+                      reviewList: reviewList,
+                    ),
+                fullscreenDialog: true));
+          },
         ),
       ),
     );

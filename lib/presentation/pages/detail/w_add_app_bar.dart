@@ -21,15 +21,7 @@ class AddAppBar extends StatelessWidget implements PreferredSizeWidget{
       ),
       title: Text(title),
       actions: [
-        IconButton(
-          icon: Icon(Icons.check),
-          onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => ReviewPage(),
-                fullscreenDialog: true));
 
-          },
-        ),
       ],
     );
   }

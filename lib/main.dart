@@ -1,7 +1,6 @@
 
 import 'package:c_market_app/presentation/pages/detail/bloc/review_bloc.dart';
 import 'package:c_market_app/presentation/routes/routes.dart';
-import 'package:c_market_app/service_locator.dart';
 import 'dependency_injection.dart';
 
 import 'presentation/routes/routes.dart';

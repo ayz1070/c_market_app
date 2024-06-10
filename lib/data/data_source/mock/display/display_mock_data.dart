@@ -24,7 +24,7 @@ class DisplayMockData {
         "price": 5000,
         "originalPrice": 10000,
         "discountRate": 50,
-        "reviewCount": 10000000,
+        "reviewCount": 3,
         "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=887&q=80"
       }''';
   static final String productInfo2 = '''{
@@ -34,7 +34,7 @@ class DisplayMockData {
         "price": 6400,
         "originalPrice": 8000,
         "discountRate": 20,
-        "reviewCount": 10000000,
+        "reviewCount": 3,
         "imageUrl": "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
       }''';
   static final String productInfo3 = '''{
@@ -44,7 +44,7 @@ class DisplayMockData {
         "price": 8400,
         "originalPrice": 12000,
         "discountRate": 30,
-        "reviewCount": 10000000,
+        "reviewCount": 3,
         "imageUrl": "https://plus.unsplash.com/premium_photo-1674739375681-605fb3afb6ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80"
       }''';
   static final String productInfo4 = '''{
@@ -54,7 +54,7 @@ class DisplayMockData {
         "price": 37800,
         "originalPrice": 42000,
         "discountRate": 10,
-        "reviewCount": 10000000,
+        "reviewCount": 3,
         "imageUrl": "https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
       }''';
   static final String productInfo5 = '''{
@@ -64,7 +64,7 @@ class DisplayMockData {
         "price": 20800,
         "originalPrice": 26000,
         "discountRate": 20,
-        "reviewCount": 10000000,
+        "reviewCount": 3,
         "imageUrl": "https://images.unsplash.com/photo-1620917669809-1af0497965de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
       }''';
   static final String productInfo6 = '''{
