@@ -8,7 +8,7 @@ part 'menu.model.g.dart';
 class Menu with _$Menu {
   const factory Menu({
     required int tabId,
-    required String title
+    required String title,
   }) = _Menu;
 
 
