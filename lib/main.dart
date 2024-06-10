@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'data/data_source/notification_data_source.dart';
-import 'data/repository_impl/notification_repository_impl.dart';
-import 'domain/usecase/display/notifications/fetch_notifications.dart';
 import 'presentation/pages/notification/bloc/notification_bloc.dart';
 import 'presentation/routes/routes.dart';
 import 'dependency_injection.dart';
@@ -29,7 +25,7 @@ void main() async {
 
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

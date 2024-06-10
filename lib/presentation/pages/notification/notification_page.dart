@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/theme/constant/app_icons.dart';
 import '../../../core/theme/custom/custom_font_weight.dart';
@@ -9,6 +10,20 @@ import '../../main/component/top_app_bar/widgets/svg_icon_button.dart';
 import 'bloc/notification_bloc.dart';
 
 class NotificationPage extends StatelessWidget {
+
+  String _timeAgo(String timestamp) {
+    DateTime notificationTime = DateTime.parse(timestamp);
+    Duration difference = DateTime.now().difference(notificationTime);
+
+    if (difference.inMinutes < 60) {
+      return '${difference.inMinutes}분 전';
+    } else if (difference.inHours < 24) {
+      return '${difference.inHours}시간 전';
+    } else {
+      return DateFormat('MM/dd/yyyy').format(notificationTime);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -32,6 +47,8 @@ class NotificationPage extends StatelessWidget {
           style: textTheme.titleMedium.semiBold
               ?.copyWith(color: colorScheme.contentPrimary),
         ),
+        backgroundColor: colorScheme.surface,
+        centerTitle: true,
       ),
       body: BlocBuilder<NotificationBloc, NotificationState>(
         builder: (context, state) {
@@ -42,13 +59,45 @@ class NotificationPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final notification = state.notifications[index];
 
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(notification.imageUrl),
+                return Container(
+                  padding: EdgeInsets.all(16.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(notification.imageUrl),
+                        radius: 25,
+                      ),
+                      SizedBox(width: 16.0),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  notification.title,
+                                  style: textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  _timeAgo(notification.timestamp),
+                                  style: textTheme.labelLarge?.copyWith(color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              notification.message,
+                              style: textTheme.labelLarge,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  title: Text(notification.title),
-                  subtitle: Text(notification.message),
-                  trailing: Text(notification.timestamp),
                 );
               },
               itemCount: state.notifications.length,
@@ -62,4 +111,6 @@ class NotificationPage extends StatelessWidget {
       ),
     );
   }
+
+
 }
