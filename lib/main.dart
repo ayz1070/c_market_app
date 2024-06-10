@@ -1,5 +1,5 @@
 import 'presentation/routes/routes.dart';
-import 'dependency_injection.dart';
+import 'dependency_injection.dart' ;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -12,6 +12,10 @@ import 'presentation/main/bloc/payment_bloc/payment_bloc.dart';
 import 'presentation/main/cubit/mall_type_cubit.dart';
 import 'presentation/pages/cart/bloc/cart_list_bloc/cart_list_bloc.dart';
 
+
+import 'injection_container.dart' as di;
+import '../../presentation/blocs/user/user_bloc.dart';
+import 'presentation/pages/my_page/my_page.dart';
 void main() async{
   await Hive.initFlutter();
 
@@ -21,7 +25,9 @@ void main() async{
   //setLocator();
 
   configureDependencies();
+  di.init();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -32,6 +38,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (_) => di.sl<UserBloc>(),
+        ),
+
         BlocProvider<MallTypeCubit>(
           create: (context) => MallTypeCubit(),
         ),
