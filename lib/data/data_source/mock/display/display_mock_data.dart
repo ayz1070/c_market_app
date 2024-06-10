@@ -77,6 +77,106 @@ class DisplayMockData {
         "reviewCount": 10000000,
         "imageUrl": "https://images.unsplash.com/photo-1614267861476-0d129972a0f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
       }''';
+  static final String productInfo7 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+      }''';
+  static final String productInfo8 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+      }''';
+  static final String productInfo9 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1513116476489-7635e79feb27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=793&q=80"
+      }''';
+  static final String productInfo10 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1520931061294-db3e762a9273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+      }''';
+  static final String productInfo11 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1517088587697-8de5e72b421b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
+      }''';
+  static final String productInfo12 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[단독 기획] 에스쁘아 꾸뛰르 립틴트 ",
+        "subtitle":"탱글한 입술을 위한 최고의 아이템",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+      }''';
+  static final String productInfo13 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[케라스타즈] 엘릭서 얼팀 오리지널 100ml + 엘릭서 얼팀 오리지널 15ml(마이뷰티박스 가입일 구매 시 +3%적립)",
+        "subtitle":"얼팀 오리지널을 이 가격에?!",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1679064287823-fbd549bf47dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+      }''';
+  static final String productInfo14 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[산타마리아노벨라] 아쿠아 디 로즈 2종 (택1) (장미수 토너)",
+        "subtitle":"사계절 멀티토너",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1673822402526-04413688da96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
+      }''';
+  static final String productInfo15 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title": "[에끌라두] 골든 샌달 우드 괄사 페이스&두피 마시지",
+        "subtitle": "시원하고 섬세하게 마사지",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1614859475299-814a09cd2e79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+      }''';
+  static final String productInfo16 = '''{
+        "productId": "${DateTime.now().microsecondsSinceEpoch}",
+        "title":"[KS365] 데일리 항균처리 쿠션 퍼프 2종",
+        "subtitle":"향균처리가 되어 있는 각성비 물방울 모양 퍼프",
+        "price": 14400,
+        "originalPrice": 16000,
+        "discountRate": 20,
+        "reviewCount": 10000000,
+        "imageUrl": "https://images.unsplash.com/photo-1590439471364-192aa70c0b53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+      }''';
 
   static String getViewModules({required int tabId}) {
     var viewModules = [];
@@ -88,8 +188,8 @@ class DisplayMockData {
     ];
 
     var products1 = [productInfo, productInfo2, productInfo3, productInfo4, productInfo5, productInfo6];
-    var products2 = [productInfo2, productInfo, productInfo4, productInfo3, productInfo6, productInfo5];
-    var products3 = [productInfo3, productInfo2, productInfo4, productInfo5, productInfo6, productInfo];
+    var products2 = [productInfo7, productInfo8, productInfo9, productInfo10, productInfo11, productInfo12];
+    var products3 = [productInfo13, productInfo14, productInfo15, productInfo16, productInfo4, productInfo5];
 
     String type;
     List<String> products;
