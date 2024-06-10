@@ -5,6 +5,8 @@ import '../../../../../../core/theme/constant/app_icons.dart';
 import '../../../../../../core/theme/custom/custom_theme.dart';
 import '../../../../../../core/utils/extensions.dart';
 import '../../../../../../domain/model/display/product_info/product_info.model.dart';
+import '../../../../detail/s_detail_page.dart';
+import '../../../../detail/test/test_data.dart';
 import 'add_cart_button.dart';
 
 class ProductCardWidget extends StatelessWidget {
@@ -29,76 +31,83 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          children: [
-            AspectRatio(
-              aspectRatio: imageAspect,
-              child: Image.network(
-                productInfo.imageUrl,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => DetailPage(productInfo: productInfo, reviewList: TestData.testReviewList,),
+            fullscreenDialog: true));
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              AspectRatio(
+                aspectRatio: imageAspect,
+                child: Image.network(
+                  productInfo.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              AddCartButton(productInfo),
+            ],
+          ),
+          const SizedBox(
+            height: 9,
+          ),
+          Text(
+            productInfo.title,
+            style: titleStyle?.titleCopyWith(),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
+          const SizedBox(height: 1),
+          Row(
+            children: [
+              Text(
+                '${productInfo.discountRate.toString()}%',
+                style: priceStyle?.discountRateCopyWith(),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Text(
+                productInfo.price.toWon(),
+                style: priceStyle?.priceCopyWith(),
+              ),
+            ],
+          ),
+          const SizedBox(height: 2),
+          Text(
+            productInfo.originalPrice.toWon(),
+            style: originalPriceStyle?.originalPriceCopyWith(),
+          ),
+          if (needShowReviewCount)
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    AppIcons.chat,
+                    width: 13,
+                    height: 13,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.contentTertiary,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    '후기 ${productInfo.reviewCount.toReview()}',
+                    style: reviewStyle?.reviewCountCopyWith(),
+                  ),
+                ],
               ),
             ),
-            AddCartButton(productInfo),
-          ],
-        ),
-        const SizedBox(
-          height: 9,
-        ),
-        Text(
-          productInfo.title,
-          style: titleStyle?.titleCopyWith(),
-          overflow: TextOverflow.ellipsis,
-          maxLines: 2,
-        ),
-        const SizedBox(height: 1),
-        Row(
-          children: [
-            Text(
-              '${productInfo.discountRate.toString()}%',
-              style: priceStyle?.discountRateCopyWith(),
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            Text(
-              productInfo.price.toWon(),
-              style: priceStyle?.priceCopyWith(),
-            ),
-          ],
-        ),
-        const SizedBox(height: 2),
-        Text(
-          productInfo.originalPrice.toWon(),
-          style: originalPriceStyle?.originalPriceCopyWith(),
-        ),
-        if (needShowReviewCount)
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  AppIcons.chat,
-                  width: 13,
-                  height: 13,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.contentTertiary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  '후기 ${productInfo.reviewCount.toReview()}',
-                  style: reviewStyle?.reviewCountCopyWith(),
-                ),
-              ],
-            ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

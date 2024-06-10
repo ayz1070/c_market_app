@@ -1,6 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:c_market_app/presentation/pages/detail/bloc/review_bloc.dart';
+import 'package:c_market_app/presentation/routes/routes.dart';
+import 'dependency_injection.dart';
+
 import 'presentation/pages/notification/bloc/notification_bloc.dart';
+
 
 import 'presentation/pages/detail/bloc/review_bloc.dart';
 import 'presentation/routes/routes.dart';

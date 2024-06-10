@@ -19,15 +19,7 @@ class ReviewAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: Icon(Icons.arrow_back_ios)),
       title: Text(title),
-      actions: [
-        IconButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => ReviewAddPage(),
-                  fullscreenDialog: true));
-            },
-            icon: Icon(Icons.add_box_outlined)),
-      ],
+
     );
   }
 }
