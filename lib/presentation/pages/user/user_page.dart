@@ -1,130 +1,125 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/constant/app_colors.dart';
-import '../../../core/theme/constant/app_icons.dart';
-import '../../../core/theme/custom/custom_font_weight.dart';
-import '../../../core/theme/custom/custom_theme.dart';
+import 'customer_service_tabbar_screen.dart';
+import 'delivery_address_screen.dart';
+import 'package:c_market_app/presentation/pages/user/set_alarm_screen.dart';
 
 class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+  UserPage({super.key});
+
+  // final String userImage;
+  // final String username;
+
+  //final user = FirebaseAuth.instance.currentUser!;
+  //final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 60,
-        ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(20, 60, 20, 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              '''간편하게 로그인하고\nC-Market의\n다양한 서비스를 이용해보세요.''',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall
-                  ?.copyWith(
-                    color: Theme.of(context).colorScheme.contentPrimary,
-                  )
-                  .regular,
-              textAlign: TextAlign.center,
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '마이 페이지',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            SizedBox(height: 24),
-            SizedBox(
-              height: 48,
-              child: TextButton(
-                //TODO 로그인 이벤트 호출
+            const Row(
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                        radius: 30,
+                        backgroundImage: NetworkImage(
+                            'https://flexible.img.hani.co.kr/flexible/normal/960/960/imgdb/resize/2019/0121/00501111_20190121.JPG')),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('jun',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                Spacer(),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_right,
+                    size: 30,
+                  ),
+                  onPressed: null,
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+            Text('구매',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+              child: Text('주문목록'),
+            ),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+              child: const Text('취소/반품/교환목록'),
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => DeliveryAddressScreen()));
+                },
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('배송지 관리')),
+            SizedBox(height: 10),
+            Text('고객센터',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => CustomerServiceTabbarScreen()));
+                },
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('공지사항')),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => CustomerServiceTabbarScreen()));
+                },
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('FAQ')),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => CustomerServiceTabbarScreen()));
+                },
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('1:1문의')),
+            SizedBox(height: 10),
+            Text('설정',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            TextButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => UserProfile()),
-                  );
+                      MaterialPageRoute(builder: (ctx) => SetAlarmScreen()));
                 },
-                style: const ButtonStyle(
-                  padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
-                    EdgeInsets.zero,
-                  ),
-                ),
-                child: Image.asset(
-                  AppIcons.kakaoLogin,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32),
-        child: Column(
-          children: [
-            ClipOval(
-              child: //Image.asset(
-                  Image.network(
-                //TODO 유저 프로필 이미지
-                'https://i.pravatar.cc/150?img=20',
-                width: 110,
-                height: 110,
-              ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              //TODO 유저 이름
-              'Jessica',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(
-                    color: Colors.white, //AppColors.black,
-                  )
-                  .regular,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Container(
-              width: double.infinity,
-              child: ElevatedButton(
-                //TODO 로그아웃 이벤트 호출
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('알림 설정')),
+            TextButton(
                 onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll<Color>(
-                    Theme.of(context).primaryColor,
-                  ),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(8.0)),
-                    ),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: Text(
-                    '로그아웃',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(
-                          color: AppColors.white,
-                        )
-                        .regular,
-                  ),
-                ),
-              ),
-            ),
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('로그아웃')),
+            TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(alignment: Alignment.centerLeft),
+                child: Text('회원 탈퇴')),
           ],
         ),
       ),
