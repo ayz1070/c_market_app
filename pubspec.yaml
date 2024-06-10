@@ -43,9 +43,17 @@ dependencies:
   firebase_crashlytics: ^4.0.0
   equatable: ^2.0.5
 
+
 dependency_overrides:
   http: 1.2.1
   uuid: 4.4.0
+  image_picker: ^1.1.2
+
+  velocity_x:
+  equatable:
+
+
+
 
 dev_dependencies:
   analyzer: ^5.13.0
@@ -58,6 +66,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
   retrofit_generator: ^8.1.0
   velocity_x: 
+
 
 flutter:
   uses-material-design: true

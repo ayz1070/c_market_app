@@ -1,6 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 
 import 'presentation/pages/notification/bloc/notification_bloc.dart';
+
+import 'package:c_market_app/presentation/pages/detail/bloc/review_bloc.dart';
+import 'package:c_market_app/presentation/routes/routes.dart';
+import 'package:c_market_app/service_locator.dart';
+import 'dependency_injection.dart';
+
+
 import 'presentation/routes/routes.dart';
 import 'dependency_injection.dart';
 import 'package:flutter/material.dart';
@@ -50,12 +57,18 @@ class MyApp extends StatelessWidget {
         BlocProvider<PaymentBloc>(
           create: (_) => getIt<PaymentBloc>(),
           lazy: false,
+        ), // Add other providers if needed
+
+        // 리뷰 Bloc
+        BlocProvider<ReviewBloc>(
+            create:(_) => getIt<ReviewBloc>(),
         ),
         BlocProvider<NotificationBloc>(
           create: (context) =>
               getIt<NotificationBloc>()..add(LoadNotificationsEvent()),
         ),
         // Add other providers if needed
+
       ],
       child: MaterialApp.router(
         routerConfig: router,
