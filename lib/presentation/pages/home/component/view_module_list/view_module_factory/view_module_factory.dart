@@ -18,6 +18,7 @@ enum Modules {
   viewModuleD,
   viewModuleE,
   categoryProductViewModule,
+  Beauty
 }
 
 class ViewModuleFactory {
@@ -48,6 +49,8 @@ extension ModulesX on Modules {
       case Modules.viewModuleE:
         return const ViewModuleE();
       case Modules.categoryProductViewModule:
+        return CategoryProductViewModule(info: info);
+      case Modules.Beauty:
         return CategoryProductViewModule(info: info);
     }
   }

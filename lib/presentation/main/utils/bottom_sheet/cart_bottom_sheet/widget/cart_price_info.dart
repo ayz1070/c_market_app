@@ -17,9 +17,8 @@ const double _iconSize = 16;
 const double _iconPadding = 8;
 
 class CartPriceInfo extends StatelessWidget {
-  const CartPriceInfo({super.key, required this.productInfo, required this.quantity});
-  final ProductInfo productInfo;
-  final int quantity;
+  const CartPriceInfo({super.key});
+
   @override
   Widget build(BuildContext context) {
     final productInfo = context.watch<CartBloc>().state.productInfo;

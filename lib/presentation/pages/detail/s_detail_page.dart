@@ -126,8 +126,8 @@ class DetailPage extends StatelessWidget {
 
             ReviewBox(userName: '안영준',
               date: '24/05/28',
-              comment: '너무 좋아요!!',
-              starCount: 3,),
+              comment: '발림성이 좋아요!!',
+              starCount: 5,),
             // 리뷰 더 더 보기 버튼
             Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10)),
             LongButton(
