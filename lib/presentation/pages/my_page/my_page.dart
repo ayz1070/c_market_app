@@ -43,28 +43,28 @@ class MyPage extends StatelessWidget {
                   SizedBox(height: 24),
                   ListTile(
                     leading: Icon(Icons.shopping_bag),
-                    title: Text('Order History'),
+                    title: Text('구매 이력'),
                     onTap: () {
                       // Navigate to Order History Screen
                     },
                   ),
                   ListTile(
                     leading: Icon(Icons.favorite),
-                    title: Text('Wishlist'),
+                    title: Text('위시리스트'),
                     onTap: () {
                       // Navigate to Wishlist Screen
                     },
                   ),
                   ListTile(
                     leading: Icon(Icons.settings),
-                    title: Text('Settings'),
+                    title: Text('세팅'),
                     onTap: () {
                       // Navigate to Settings Screen
                     },
                   ),
                   ListTile(
                     leading: Icon(Icons.logout),
-                    title: Text('Logout'),
+                    title: Text('로그아웃'),
                     onTap: () {
                       // Handle Logout
                     },
