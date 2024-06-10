@@ -47,7 +47,7 @@ class NotificationPage extends StatelessWidget {
           style: textTheme.titleMedium.semiBold
               ?.copyWith(color: colorScheme.contentPrimary),
         ),
-        backgroundColor: colorScheme.surface,
+        backgroundColor: colorScheme.background,
         centerTitle: true,
       ),
       body: BlocBuilder<NotificationBloc, NotificationState>(
