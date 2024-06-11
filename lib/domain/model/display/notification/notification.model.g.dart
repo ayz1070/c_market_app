@@ -13,6 +13,10 @@ _$NotificationImpl _$$NotificationImplFromJson(Map<String, dynamic> json) =>
       message: json['message'] as String,
       imageUrl: json['imageUrl'] as String,
       timestamp: json['timestamp'] as String,
+      productImages: (json['productImages'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$NotificationImplToJson(_$NotificationImpl instance) =>
@@ -22,4 +26,5 @@ Map<String, dynamic> _$$NotificationImplToJson(_$NotificationImpl instance) =>
       'message': instance.message,
       'imageUrl': instance.imageUrl,
       'timestamp': instance.timestamp,
+      'productImages': instance.productImages,
     };

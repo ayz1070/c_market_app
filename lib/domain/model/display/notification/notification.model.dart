@@ -13,6 +13,7 @@ class Notification with _$Notification {
     required String message,
     required String imageUrl,
     required String timestamp,
+    @Default([]) List<String> productImages,
   }) = _Notification;
 
   // DTO를 도메인 모델로 변환하는 메서드
@@ -23,6 +24,7 @@ class Notification with _$Notification {
       message: dto.message ?? '',
       imageUrl: dto.imageUrl ?? '',
       timestamp: dto.timestamp ?? '',
+      productImages: dto.productImages ?? [],
     );
   }
 
