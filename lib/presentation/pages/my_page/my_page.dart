@@ -9,7 +9,7 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Page'),
+        title: Text('마이 페이지'),
       ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
