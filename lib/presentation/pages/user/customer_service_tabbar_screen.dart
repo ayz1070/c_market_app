@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomerServiceTabbarScreen extends StatelessWidget {
-  const CustomerServiceTabbarScreen({super.key});
+  const CustomerServiceTabbarScreen({super.key, this.selectedIndex});
+
+  final selectedIndex;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 0,
+      initialIndex: selectedIndex,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
