@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:c_market_app/presentation/pages/user/user_image_picker.dart';
+import 'package:c_market_app/presentation/pages/user/user_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
