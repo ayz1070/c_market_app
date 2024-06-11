@@ -21,15 +21,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(title),
       actions: [
-        IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => ReviewPage(),
-              fullscreenDialog: true,
-            ));
-          },
-          icon: Icon(Icons.home_outlined),
-        ),
+
       ],
     );
   }

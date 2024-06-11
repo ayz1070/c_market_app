@@ -11,11 +11,6 @@ abstract class DisplayRepository extends Repository{
     required MallType mallType,
   });
 
-  // Future<ResponseWrapper<List<ViewModule>>> getViewModulesByTabId({
-  //   required int tabId,
-  //   required int page,
-  // });
-
   // 장바구니 리스트 불러오기
   Future<ResponseWrapper<List<Cart>>> getCartList();
 

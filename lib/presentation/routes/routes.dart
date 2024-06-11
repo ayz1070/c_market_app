@@ -1,3 +1,4 @@
+import '../../domain/model/display/display.model.dart';
 import '../main/main_screen.dart';
 import '../pages/cart/cart_page.dart';
 import '../pages/detail/s_detail_page.dart';
@@ -29,24 +30,56 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RoutePath.review,
       name: 'review',
-      builder: (context, state) => const ReviewPage(),
+      builder: (context, state) => const ReviewPage(
+        productInfo: ProductInfo(
+            productId: "",
+            title: "",
+            subtitle: "",
+            imageUrl: "",
+            price: 0,
+            originalPrice: 0,
+            discountRate: 0,
+            reviewCount: 0),
+        reviewList: [],
+      ),
     ),
     GoRoute(
       path: RoutePath.detail,
       name: 'detail',
-      builder: (context, state) => const DetailPage(),
+      builder: (context, state) => const DetailPage(
+          productInfo: ProductInfo(
+              productId: "",
+              title: "",
+              subtitle: "",
+              imageUrl: "",
+              price: 0,
+              originalPrice: 0,
+              discountRate: 0,
+              reviewCount: 0),
+          reviewList: [],
+      ),
     ),
     GoRoute(
       path: RoutePath.review_add,
       name: 'review_add',
-      builder: (context, state) => const ReviewAddPage(),
+      builder: (context, state) => const ReviewAddPage(
+        productInfo: ProductInfo(
+            productId: "",
+            title: "",
+            subtitle: "",
+            imageUrl: "",
+            price: 0,
+            originalPrice: 0,
+            discountRate: 0,
+            reviewCount: 0),
+        reviewList: [],
+      ),
     ),
     GoRoute(
       path: RoutePath.notification,
       name: 'notification',
-      builder: (context, state) => const NotificationPage(),
+      builder: (context, state) => NotificationPage(),
     ),
   ],
   initialLocation: '/splash',
 );
-
