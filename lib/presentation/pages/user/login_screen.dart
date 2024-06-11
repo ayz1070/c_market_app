@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:c_market_app/presentation/pages/user/sign_up_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../routes/route_path.dart';
@@ -65,68 +66,87 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(60, 100, 60, 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('logo'),
-            SizedBox(height: 10),
-            Form(
-              key: _formKey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: '이메일'),
-                    keyboardType: TextInputType.emailAddress,
-                    autocorrect: false,
-                    textCapitalization: TextCapitalization.none,
-                    validator: (value) {
-                      if (value == null ||
-                          value.trim().isEmpty ||
-                          !value.contains('@')) {
-                        return '유효한 이메일 주소를 입력해 주세요.';
-                      }
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          height: MediaQuery.of(context).size.height, // 화면의 전체 높이를 차지하게 설정
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/svg/cmarket_logo.svg',
+                  height: 30, // 원하는 크기로 조정 가능
+                  width: 30,
+                ),
+                SizedBox(height: 10),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(labelText: '이메일',),
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
+                        textCapitalization: TextCapitalization.none,
+                        validator: (value) {
+                          if (value == null ||
+                              value.trim().isEmpty ||
+                              !value.contains('@')) {
+                            return '유효한 이메일 주소를 입력해 주세요.';
+                          }
 
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _enteredEmail = value!;
-                    },
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _enteredEmail = value!;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(labelText: '비밀번호'),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.trim().length < 6) {
+                            return '6자 이상의 비밀번호를 입력해 주세요.';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _enteredPassword = value!;
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: _submit,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFDCAE96), //DCAE96 FF6F61
+                              //Theme.of(context).colorScheme.primaryContainer,
+                            ),
+                            child: Text('로그인', style: TextStyle(color: Colors.white)),
+                          ),
+                          Padding(padding: EdgeInsets.all(10)),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (ctx) => SignUpScreen()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white
+                            ),
+                            child: Text('회원가입'),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: '비밀번호'),
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.trim().length < 6) {
-                        return '6자 이상의 비밀번호를 입력해 주세요.';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _enteredPassword = value!;
-                    },
-                  ),
-                  const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: _submit,
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFDCAE96) //DCAE96 FF6F61
-                        //Theme.of(context).colorScheme.primaryContainer,
-                        ),
-                    child: Text('로그인', style: TextStyle(color: Colors.white),),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (ctx) => SignUpScreen()));
-                    },
-                    child: Text('회원가입'),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
