@@ -51,6 +51,8 @@ dependency_overrides:
 
   velocity_x:
   equatable:
+  firebase_storage: ^11.7.7
+  cloud_firestore: ^4.17.5
 
 
 
