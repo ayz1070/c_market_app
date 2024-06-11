@@ -1,7 +1,11 @@
+import 'package:c_market_app/presentation/pages/user/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:c_market_app/presentation/pages/user/sign_up_screen.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../routes/route_path.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,11 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
           .signInWithEmailAndPassword(
               email: _enteredEmail, password: _enteredPassword);
       //print(userCredentials);
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (ctx) => UserPage(),
-        ),
-      );
+      context.push(RoutePath.main);
     } on FirebaseAuthException catch (error) {
       if (error.code == 'user-not-found') {
         ScaffoldMessenger.of(context).clearSnackBars();
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Color(0xFFDCAE96) //DCAE96 FF6F61
                         //Theme.of(context).colorScheme.primaryContainer,
                         ),
-                    child: Text('로그인'),
+                    child: Text('로그인', style: TextStyle(color: Colors.white),),
                   ),
                   TextButton(
                     onPressed: () {
