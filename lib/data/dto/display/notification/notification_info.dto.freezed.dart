@@ -25,6 +25,7 @@ mixin _$NotificationInfoDto {
   String? get message => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get timestamp => throw _privateConstructorUsedError;
+  List<String> get productImages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $NotificationInfoDtoCopyWith<$Res> {
       String? title,
       String? message,
       String? imageUrl,
-      String? timestamp});
+      String? timestamp,
+      List<String> productImages});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$NotificationInfoDtoCopyWithImpl<$Res, $Val extends NotificationInfoDto>
     Object? message = freezed,
     Object? imageUrl = freezed,
     Object? timestamp = freezed,
+    Object? productImages = null,
   }) {
     return _then(_value.copyWith(
       notificationId: freezed == notificationId
@@ -86,6 +89,10 @@ class _$NotificationInfoDtoCopyWithImpl<$Res, $Val extends NotificationInfoDto>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
+      productImages: null == productImages
+          ? _value.productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$NotificationInfoDtoImplCopyWith<$Res>
       String? title,
       String? message,
       String? imageUrl,
-      String? timestamp});
+      String? timestamp,
+      List<String> productImages});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$NotificationInfoDtoImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? imageUrl = freezed,
     Object? timestamp = freezed,
+    Object? productImages = null,
   }) {
     return _then(_$NotificationInfoDtoImpl(
       notificationId: freezed == notificationId
@@ -144,6 +153,10 @@ class __$$NotificationInfoDtoImplCopyWithImpl<$Res>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String?,
+      productImages: null == productImages
+          ? _value._productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -156,7 +169,9 @@ class _$NotificationInfoDtoImpl implements _NotificationInfoDto {
       this.title = '',
       this.message = '',
       this.imageUrl = '',
-      this.timestamp = ''});
+      this.timestamp = '',
+      final List<String> productImages = const []})
+      : _productImages = productImages;
 
   factory _$NotificationInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationInfoDtoImplFromJson(json);
@@ -176,10 +191,18 @@ class _$NotificationInfoDtoImpl implements _NotificationInfoDto {
   @override
   @JsonKey()
   final String? timestamp;
+  final List<String> _productImages;
+  @override
+  @JsonKey()
+  List<String> get productImages {
+    if (_productImages is EqualUnmodifiableListView) return _productImages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productImages);
+  }
 
   @override
   String toString() {
-    return 'NotificationInfoDto(notificationId: $notificationId, title: $title, message: $message, imageUrl: $imageUrl, timestamp: $timestamp)';
+    return 'NotificationInfoDto(notificationId: $notificationId, title: $title, message: $message, imageUrl: $imageUrl, timestamp: $timestamp, productImages: $productImages)';
   }
 
   @override
@@ -194,13 +217,15 @@ class _$NotificationInfoDtoImpl implements _NotificationInfoDto {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.timestamp, timestamp) ||
-                other.timestamp == timestamp));
+                other.timestamp == timestamp) &&
+            const DeepCollectionEquality()
+                .equals(other._productImages, _productImages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, notificationId, title, message, imageUrl, timestamp);
+  int get hashCode => Object.hash(runtimeType, notificationId, title, message,
+      imageUrl, timestamp, const DeepCollectionEquality().hash(_productImages));
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +248,8 @@ abstract class _NotificationInfoDto implements NotificationInfoDto {
       final String? title,
       final String? message,
       final String? imageUrl,
-      final String? timestamp}) = _$NotificationInfoDtoImpl;
+      final String? timestamp,
+      final List<String> productImages}) = _$NotificationInfoDtoImpl;
 
   factory _NotificationInfoDto.fromJson(Map<String, dynamic> json) =
       _$NotificationInfoDtoImpl.fromJson;
@@ -238,6 +264,8 @@ abstract class _NotificationInfoDto implements NotificationInfoDto {
   String? get imageUrl;
   @override
   String? get timestamp;
+  @override
+  List<String> get productImages;
   @override
   @JsonKey(ignore: true)
   _$$NotificationInfoDtoImplCopyWith<_$NotificationInfoDtoImpl> get copyWith =>

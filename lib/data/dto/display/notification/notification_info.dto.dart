@@ -11,6 +11,7 @@ class NotificationInfoDto with _$NotificationInfoDto {
     @Default('') String? message,
     @Default('') String? imageUrl,
     @Default('') String? timestamp,
+    @Default([]) List<String> productImages,
   }) = _NotificationInfoDto;
 
   factory NotificationInfoDto.fromJson(Map<String, Object?> json) =>
