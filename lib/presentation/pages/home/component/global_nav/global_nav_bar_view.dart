@@ -30,7 +30,7 @@ class GlobalNavBarView extends StatelessWidget {
                 children: List.generate(
                   state.menus.length,
                       (index) {
-                        final tabId = menus[index].tabId;
+                    final tabId = menus[index].tabId;
 
                     return BlocProvider(
                       create: (_) => getIt<ViewModuleBloc>()
