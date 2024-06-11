@@ -45,7 +45,7 @@ class DisplayMockApi implements DisplayApi {
     }
 
 
-    String source = DisplayMockData.getViewModules();
+    String source = DisplayMockData.getViewModules(tabId:tabId);
 
     return Future.delayed(
       Duration(milliseconds: 800),
