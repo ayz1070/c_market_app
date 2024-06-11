@@ -170,22 +170,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const SizedBox(height: 12),
                     if (_isUploading) CircularProgressIndicator(),
-                    if (!_isUploading)
-                      ElevatedButton(
-                        onPressed: _submit,
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFDCAE96) //DCAE96 FF6F61
-                            //Theme.of(context).colorScheme.primaryContainer,
-                            ),
-                        child: Text('회원가입'),
-                      ),
-                    if (!_isUploading)
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (ctx) => LoginScreen()));
-                        },
-                        child: Text('로그인'),
+                      if (!_isUploading)
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: _submit,
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFDCAE96) //DCAE96 FF6F61
+                              //Theme.of(context).colorScheme.primaryContainer,
+                              ),
+                          child: Text('입력 완료', style: TextStyle(color: Colors.white)),
+                        ),
                       ),
                   ],
                 ),
