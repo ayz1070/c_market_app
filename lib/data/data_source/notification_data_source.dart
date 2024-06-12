@@ -1,5 +1,6 @@
-// Firebase Firestore에서 데이터를 가져오는 데이터 소스 클래스
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import '../dto/display/notification/notification_info.dto.dart';
@@ -7,16 +8,30 @@ import '../dto/display/notification/notification_info.dto.dart';
 @lazySingleton
 class NotificationDataSource {
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
 
-  NotificationDataSource(this._firestore);
+  NotificationDataSource(this._firestore) : _storage = GetIt.instance<FirebaseStorage>();
 
-  // FireStore에서 알림 목록을 가져오는 메서드
   Future<List<NotificationInfoDto>> fetchNotifications() async {
-    final querySnapshot = await _firestore.collection('notifications').get();
+    final querySnapshot = await _firestore.collection('notifications')
+        .orderBy('timestamp', descending: true)
+        .get();
 
-    return querySnapshot.docs
-        .map((doc) =>
-            NotificationInfoDto.fromJson(doc.data() as Map<String, Object?>))
-        .toList();
+    return await Future.wait(querySnapshot.docs.map((doc) async {
+      var data = doc.data();
+      data['imageUrl'] = await _getImageUrl(data['imageUrl']);
+      if (data['productImages'] != null) {
+        data['productImages'] = await Future.wait(
+          (data['productImages'] as List<dynamic>)
+              .map((imagePath) => _getImageUrl(imagePath as String)),
+        );
+      }
+
+      return NotificationInfoDto.fromJson(data as Map<String, dynamic>);
+    }).toList());
+  }
+
+  Future<String> _getImageUrl(String imagePath) async {
+    return await _storage.ref(imagePath).getDownloadURL();
   }
 }

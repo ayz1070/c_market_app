@@ -1,28 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 import '../../../core/theme/constant/app_icons.dart';
-import '../../../core/theme/custom/custom_font_weight.dart';
 import '../../../core/theme/custom/custom_theme.dart';
 import '../../main/component/top_app_bar/widgets/svg_icon_button.dart';
+import '../../widget/notification/notification_item.dart';
 import 'bloc/notification_bloc.dart';
 
 class NotificationPage extends StatelessWidget {
-
-  String _timeAgo(String timestamp) {
-    DateTime notificationTime = DateTime.parse(timestamp);
-    Duration difference = DateTime.now().difference(notificationTime);
-
-    if (difference.inMinutes < 60) {
-      return '${difference.inMinutes}분 전';
-    } else if (difference.inHours < 24) {
-      return '${difference.inHours}시간 전';
-    } else {
-      return DateFormat('MM/dd/yyyy').format(notificationTime);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +30,12 @@ class NotificationPage extends StatelessWidget {
         ),
         title: Text(
           '알림',
-          style: textTheme.titleMedium.semiBold
-              ?.copyWith(color: colorScheme.contentPrimary),
+          style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: colorScheme.contentPrimary,
+          ),
         ),
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.background, // 수정: AppBar 배경색 설정
         centerTitle: true,
       ),
       body: BlocBuilder<NotificationBloc, NotificationState>(
@@ -59,46 +47,7 @@ class NotificationPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final notification = state.notifications[index];
 
-                return Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(notification.imageUrl),
-                        radius: 25,
-                      ),
-                      SizedBox(width: 16.0),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  notification.title,
-                                  style: textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  _timeAgo(notification.timestamp),
-                                  style: textTheme.labelLarge?.copyWith(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 8.0),
-                            Text(
-                              notification.message,
-                              style: textTheme.labelLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
+                return NotificationItem(notification: notification);
               },
               itemCount: state.notifications.length,
             );
@@ -111,6 +60,4 @@ class NotificationPage extends StatelessWidget {
       ),
     );
   }
-
-
 }

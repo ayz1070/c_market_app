@@ -21,10 +21,10 @@ class _DisplayApi implements DisplayApi {
   @override
   Future<ResponseWrapper<List<MenuDto>>> getMenusByMallType(
       String mallType) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ResponseWrapper<List<MenuDto>>>(Options(
       method: 'GET',
@@ -58,10 +58,10 @@ class _DisplayApi implements DisplayApi {
     int tabId,
     int page,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ResponseWrapper<List<ViewModuleDto>>>(Options(
       method: 'GET',
