@@ -13,7 +13,9 @@ class NotificationDataSource {
   NotificationDataSource(this._firestore) : _storage = GetIt.instance<FirebaseStorage>();
 
   Future<List<NotificationInfoDto>> fetchNotifications() async {
-    final querySnapshot = await _firestore.collection('notifications').get();
+    final querySnapshot = await _firestore.collection('notifications')
+        .orderBy('timestamp', descending: true)
+        .get();
 
     return await Future.wait(querySnapshot.docs.map((doc) async {
       var data = doc.data();
