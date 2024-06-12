@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import '../dto/display/notification/notification_info.dto.dart';
@@ -9,7 +10,7 @@ class NotificationDataSource {
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
 
-  NotificationDataSource(this._firestore, this._storage);
+  NotificationDataSource(this._firestore) : _storage = GetIt.instance<FirebaseStorage>();
 
   Future<List<NotificationInfoDto>> fetchNotifications() async {
     final querySnapshot = await _firestore.collection('notifications').get();
