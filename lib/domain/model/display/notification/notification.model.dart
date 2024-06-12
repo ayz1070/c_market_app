@@ -6,8 +6,8 @@ part 'notification.model.freezed.dart';
 part 'notification.model.g.dart';
 
 @freezed
-class Notification with _$Notification {
-  const factory Notification({
+class AppNotification with _$AppNotification {
+  const factory AppNotification({
     required String notificationId,
     required String title,
     required String message,
@@ -17,8 +17,8 @@ class Notification with _$Notification {
   }) = _Notification;
 
   // DTO를 도메인 모델로 변환하는 메서드
-  factory Notification.fromDto(NotificationInfoDto dto) {
-    return Notification(
+  factory AppNotification.fromDto(NotificationInfoDto dto) {
+    return AppNotification(
       notificationId: dto.notificationId ?? '',
       title: dto.title ?? '',
       message: dto.message ?? '',
@@ -28,5 +28,5 @@ class Notification with _$Notification {
     );
   }
 
-  factory Notification.fromJson(Map<String, dynamic> json) => _$NotificationFromJson(json);
+  factory AppNotification.fromJson(Map<String, dynamic> json) => _$AppNotificationFromJson(json);
 }

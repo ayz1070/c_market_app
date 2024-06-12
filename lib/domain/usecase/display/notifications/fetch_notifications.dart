@@ -9,7 +9,7 @@ class FetchNotifications {
 
   FetchNotifications(this.repository);
 
-  Future<List<Notification>> call() {
+  Future<List<AppNotification>> call() {
     return repository.fetchNotifications();
   }
 }

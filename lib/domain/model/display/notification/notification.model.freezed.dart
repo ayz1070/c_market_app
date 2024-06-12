@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Notification _$NotificationFromJson(Map<String, dynamic> json) {
+AppNotification _$AppNotificationFromJson(Map<String, dynamic> json) {
   return _Notification.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Notification {
+mixin _$AppNotification {
   String get notificationId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
@@ -29,15 +29,15 @@ mixin _$Notification {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NotificationCopyWith<Notification> get copyWith =>
+  $AppNotificationCopyWith<AppNotification> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotificationCopyWith<$Res> {
-  factory $NotificationCopyWith(
-          Notification value, $Res Function(Notification) then) =
-      _$NotificationCopyWithImpl<$Res, Notification>;
+abstract class $AppNotificationCopyWith<$Res> {
+  factory $AppNotificationCopyWith(
+          AppNotification value, $Res Function(AppNotification) then) =
+      _$AppNotificationCopyWithImpl<$Res, AppNotification>;
   @useResult
   $Res call(
       {String notificationId,
@@ -49,9 +49,9 @@ abstract class $NotificationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
-    implements $NotificationCopyWith<$Res> {
-  _$NotificationCopyWithImpl(this._value, this._then);
+class _$AppNotificationCopyWithImpl<$Res, $Val extends AppNotification>
+    implements $AppNotificationCopyWith<$Res> {
+  _$AppNotificationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -99,7 +99,7 @@ class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
 
 /// @nodoc
 abstract class _$$NotificationImplCopyWith<$Res>
-    implements $NotificationCopyWith<$Res> {
+    implements $AppNotificationCopyWith<$Res> {
   factory _$$NotificationImplCopyWith(
           _$NotificationImpl value, $Res Function(_$NotificationImpl) then) =
       __$$NotificationImplCopyWithImpl<$Res>;
@@ -116,7 +116,7 @@ abstract class _$$NotificationImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationImplCopyWithImpl<$Res>
-    extends _$NotificationCopyWithImpl<$Res, _$NotificationImpl>
+    extends _$AppNotificationCopyWithImpl<$Res, _$NotificationImpl>
     implements _$$NotificationImplCopyWith<$Res> {
   __$$NotificationImplCopyWithImpl(
       _$NotificationImpl _value, $Res Function(_$NotificationImpl) _then)
@@ -197,7 +197,7 @@ class _$NotificationImpl implements _Notification {
 
   @override
   String toString() {
-    return 'Notification(notificationId: $notificationId, title: $title, message: $message, imageUrl: $imageUrl, timestamp: $timestamp, productImages: $productImages)';
+    return 'AppNotification(notificationId: $notificationId, title: $title, message: $message, imageUrl: $imageUrl, timestamp: $timestamp, productImages: $productImages)';
   }
 
   @override
@@ -236,7 +236,7 @@ class _$NotificationImpl implements _Notification {
   }
 }
 
-abstract class _Notification implements Notification {
+abstract class _Notification implements AppNotification {
   const factory _Notification(
       {required final String notificationId,
       required final String title,

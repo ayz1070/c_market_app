@@ -11,10 +11,10 @@ class NotificationRepositoryImpl implements NotificationRepository {
   NotificationRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Notification>> fetchNotifications() async {
+  Future<List<AppNotification>> fetchNotifications() async {
     final notificationDtos = await _dataSource.fetchNotifications();
 
-    return notificationDtos.map((dto) => Notification.fromDto(dto)).toList();
+    return notificationDtos.map((dto) => AppNotification.fromDto(dto)).toList();
   }
 
 }
